@@ -1,0 +1,1 @@
+SELECT * FROM wp_sm_attendance WHERE staff_id = 2 AND date = 2018-10-04

@@ -1,0 +1,1209 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-06-17 15:54+0530\n"
+"PO-Revision-Date: 2019-06-17 15:54+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hi_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: clock-in-portal.php:17
+msgid "Clock In Portal"
+msgstr ""
+
+#: clock-in-portal.php:83 clock-in-portal.php:114 help.php:59
+msgid "Reports"
+msgstr ""
+
+#: clock-in-portal.php:84 settings/settings.php:61
+msgid "Staff"
+msgstr ""
+
+#: clock-in-portal.php:85
+msgid "Designations"
+msgstr ""
+
+#: clock-in-portal.php:86 clock-in-portal.php:115
+msgid "Holidays"
+msgstr "छुट्टियां"
+
+#: clock-in-portal.php:88 help.php:102
+msgid "Settings"
+msgstr "सेटिंग"
+
+#: clock-in-portal.php:89
+msgid "How to Work"
+msgstr "यह कैसे काम करता है"
+
+#: clock-in-portal.php:90
+msgid "Our Products"
+msgstr ""
+
+#: clock-in-portal.php:113 dashboard.php:66 help.php:41 help.php:79
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+#: clock-in-portal.php:116 help.php:46 subscribers/staff-request.php:4
+msgid "Leave Request"
+msgstr ""
+
+#: dashboard.php:29
+msgid "Clock in Portal"
+msgstr ""
+
+#: dashboard.php:30 pro_features.php:7
+msgid "Best Staff Management WordPress Plugin"
+msgstr ""
+
+#: dashboard.php:32 pro_features.php:9
+msgid "Upgrade to Pro in"
+msgstr ""
+
+#: dashboard.php:32 pro_features.php:9
+msgid "Just $14"
+msgstr ""
+
+#: dashboard.php:38 pro_features.php:15
+msgid "Set Your TimeZone"
+msgstr ""
+
+#: dashboard.php:39 pro_features.php:16
+msgid "Salary status (Monthly or Hourly)"
+msgstr ""
+
+#: dashboard.php:40 pro_features.php:17
+msgid "Ip Restriction"
+msgstr ""
+
+#: dashboard.php:41 pro_features.php:18
+msgid "Shift Mangment"
+msgstr ""
+
+#: dashboard.php:42 pro_features.php:19
+msgid "Holiday Listing"
+msgstr ""
+
+#: dashboard.php:43 pro_features.php:20
+msgid "Leave Management Module"
+msgstr ""
+
+#: dashboard.php:44
+msgid "Project Management"
+msgstr ""
+
+#: dashboard.php:51 pro_features.php:27
+msgid "Event Management Module"
+msgstr ""
+
+#: dashboard.php:52 pro_features.php:28
+msgid "Detailed Employee Records"
+msgstr ""
+
+#: dashboard.php:53 pro_features.php:29
+msgid "Attendance Management Module"
+msgstr ""
+
+#: dashboard.php:54 pro_features.php:30
+msgid "General Setting Module"
+msgstr ""
+
+#: dashboard.php:55
+msgid "News Letter Subscriptions APIs "
+msgstr ""
+
+#: dashboard.php:56 pro_features.php:32
+msgid "Import/Export Data"
+msgstr ""
+
+#: dashboard.php:57
+msgid "Task Management"
+msgstr ""
+
+#: dashboard.php:67
+msgid "Today's Status"
+msgstr ""
+
+#: dashboard.php:72 dashboard.php:169 reports.php:204 reports.php:746
+#: reports.php:911 reports.php:991 staff-request.php:112 staff-request.php:247
+#: staff-request.php:457 staffs.php:32 staffs.php:85 staffs.php:101
+#: staffs.php:149 subscribers/staff-reports.php:244
+#: subscribers/staff-reports.php:447 subscribers/staff-reports.php:508
+msgid "Name"
+msgstr "नाम"
+
+#: dashboard.php:73 dashboard.php:170 holidays.php:70 holidays.php:73
+#: holidays.php:133 holidays.php:136 reports.php:205 reports.php:747
+#: reports.php:915 reports.php:1000 staff-request.php:115 staff-request.php:250
+#: subscribers/staff-attendance.php:457 subscribers/staff-attendance.php:515
+#: subscribers/staff-attendance.php:528 subscribers/staff-attendance.php:589
+#: subscribers/staff-holidays.php:21 subscribers/staff-holidays.php:76
+#: subscribers/staff-reports.php:245 subscribers/staff-reports.php:448
+#: subscribers/staff-reports.php:512 subscribers/staff-request.php:35
+#: subscribers/staff-request.php:105
+msgid "Date"
+msgstr "तिथि"
+
+#: dashboard.php:74 dashboard.php:171
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:76 reports.php:206
+#: reports.php:748 reports.php:919 reports.php:1004
+#: subscribers/staff-attendance.php:282 subscribers/staff-reports.php:246
+#: subscribers/staff-reports.php:449 subscribers/staff-reports.php:516
+msgid "Office In"
+msgstr ""
+
+#: dashboard.php:75 dashboard.php:172
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:78 reports.php:207
+#: reports.php:749 reports.php:923 reports.php:1008
+#: subscribers/staff-attendance.php:284 subscribers/staff-reports.php:247
+#: subscribers/staff-reports.php:450 subscribers/staff-reports.php:520
+msgid "Office Out"
+msgstr ""
+
+#: dashboard.php:76 dashboard.php:173
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:80 reports.php:208
+#: reports.php:750 reports.php:927 reports.php:1012
+#: subscribers/staff-attendance.php:286 subscribers/staff-reports.php:248
+#: subscribers/staff-reports.php:451 subscribers/staff-reports.php:524
+msgid "Lunch In"
+msgstr ""
+
+#: dashboard.php:77 dashboard.php:174
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:82 reports.php:209
+#: reports.php:751 reports.php:931 reports.php:1016
+#: subscribers/staff-attendance.php:288 subscribers/staff-reports.php:249
+#: subscribers/staff-reports.php:452 subscribers/staff-reports.php:528
+msgid "Lunch Out"
+msgstr ""
+
+#: dashboard.php:78 dashboard.php:175 reports.php:211 reports.php:753
+#: subscribers/staff-reports.php:251 subscribers/staff-reports.php:454
+msgid "Work Hour"
+msgstr ""
+
+#: dashboard.php:79 dashboard.php:176 reports.php:943 reports.php:1024
+#: subscribers/staff-reports.php:540
+msgid "IP Address"
+msgstr ""
+
+#: dashboard.php:80 dashboard.php:177 reports.php:213 reports.php:755
+#: reports.php:947 reports.php:1028 subscribers/staff-reports.php:253
+#: subscribers/staff-reports.php:456 subscribers/staff-reports.php:544
+msgid "Location"
+msgstr ""
+
+#: dashboard.php:81 dashboard.php:178 designations.php:20 designations.php:61
+#: holidays.php:72 holidays.php:135 holidays.php:177 holidays.php:423
+#: holidays.php:467 staff-request.php:117 staff-request.php:252
+#: staff-request.php:481 staff-request.php:537 staffs.php:228 staffs.php:559
+#: staffs.php:644 subscribers/staff-request.php:37
+#: subscribers/staff-request.php:107 subscribers/staff-request.php:448
+#: subscribers/staff-request.php:502
+msgid "Status"
+msgstr "स्थिति"
+
+#: dashboard.php:162
+msgid "No Staff Added into system."
+msgstr ""
+
+#: designations.php:9
+msgid "Designation Management"
+msgstr ""
+
+#: designations.php:11
+msgid " Add Staff Designation"
+msgstr ""
+
+#: designations.php:18 designations.php:59 staffs.php:33 staffs.php:86
+#: staffs.php:102 staffs.php:150 staffs.php:555 staffs.php:626
+msgid "Designation"
+msgstr ""
+
+#: designations.php:19 designations.php:60
+msgid "Color"
+msgstr "रंग"
+
+#: designations.php:21 designations.php:62 reports.php:214 reports.php:756
+#: staff-request.php:118 staff-request.php:253 staffs.php:35 staffs.php:88
+#: staffs.php:104 staffs.php:152 subscribers/staff-request.php:38
+#: subscribers/staff-request.php:108
+msgid "Action"
+msgstr ""
+
+#: designations.php:76
+msgid "Add New Staff Designation"
+msgstr ""
+
+#: designations.php:80
+msgid "Designation Name"
+msgstr ""
+
+#: designations.php:85
+msgid "Designation Color"
+msgstr ""
+
+#: designations.php:89
+msgid "Designation Status"
+msgstr ""
+
+#: designations.php:92
+msgid "Available"
+msgstr ""
+
+#: designations.php:93
+msgid "Unavailable"
+msgstr ""
+
+#: designations.php:100 designations.php:120 designations.php:143
+#: holidays.php:190 holidays.php:209 holidays.php:231 holidays.php:238
+#: settings/settings.php:188 staff-request.php:280 staff-request.php:302
+#: staff-request.php:309 staffs.php:242 staffs.php:261 staffs.php:283
+#: staffs.php:290 subscribers/staff-request.php:158
+#: subscribers/staff-request.php:176 subscribers/staff-request.php:198
+#: subscribers/staff-request.php:210
+msgid "Processing..."
+msgstr ""
+
+#: designations.php:102
+msgid "Add Designation"
+msgstr ""
+
+#: designations.php:103 designations.php:124 designations.php:146
+#: holidays.php:236 reports.php:829 reports.php:847 staff-request.php:284
+#: staff-request.php:307 staffs.php:239 staffs.php:265
+#: subscribers/staff-reports.php:570 subscribers/staff-request.php:156
+#: subscribers/staff-request.php:180 subscribers/staff-request.php:208
+msgid "Close"
+msgstr "बंद करे"
+
+#: designations.php:116
+msgid "View Staff Designation"
+msgstr ""
+
+#: designations.php:137
+msgid "Update Staff Designation"
+msgstr ""
+
+#: designations.php:145
+msgid "Update Designation"
+msgstr ""
+
+#: designations.php:402
+msgid "Success: Designation updated."
+msgstr ""
+
+#: designations.php:403
+msgid "Error: Unable to update designation."
+msgstr ""
+
+#: designations.php:413
+msgid "Success: Designation deleted."
+msgstr ""
+
+#: designations.php:415
+msgid "Error: Unable to delete designation."
+msgstr ""
+
+#: help.php:3
+msgid "How to Configure"
+msgstr ""
+
+#: help.php:6
+msgid "Admin End"
+msgstr ""
+
+#: help.php:8
+msgid "Step 1 : Create a New Designation"
+msgstr ""
+
+#: help.php:9
+msgid ""
+"After installing the plugin, first we will create a new designation for "
+"staff members"
+msgstr ""
+
+#: help.php:10
+msgid "To make a new designation, we will follow the steps given below:"
+msgstr ""
+
+#: help.php:11
+msgid "1. Go to designation menu (Clock in Portal --->> Designations)"
+msgstr ""
+
+#: help.php:12
+msgid ""
+"2. Click on Add staff designation button and setup the all required field "
+"with new designation name."
+msgstr ""
+
+#: help.php:13
+msgid ""
+"After these steps, Now a new designation will added after default "
+"designation."
+msgstr ""
+
+#: help.php:14
+msgid ""
+"Note : The default designation will be updated according to the "
+"requirement...."
+msgstr ""
+
+#: help.php:17
+msgid "Step 2 : Add User as Staff"
+msgstr ""
+
+#: help.php:18
+msgid ""
+"After Creating the new designation, Now we will move to add your existing "
+"and new users as staff list"
+msgstr ""
+
+#: help.php:19 help.php:30
+msgid "Follow the below steps:"
+msgstr ""
+
+#: help.php:20 help.php:31
+msgid "1. Go to Staff menu (Clock in Portal --->> Staff)"
+msgstr ""
+
+#: help.php:21
+msgid ""
+"2. Click on Add Users as Staff button, after clicking a popup box appers. In "
+"this box you can see a list of your existing users. select a user"
+msgstr ""
+
+#: help.php:22
+msgid ""
+"3. After Selected a user, All required information will show on popup form. "
+"Now setup the designation and status for it"
+msgstr ""
+
+#: help.php:23
+msgid "4. Click on Add staff button"
+msgstr ""
+
+#: help.php:24
+msgid "After these steps, Selected user will added on list."
+msgstr ""
+
+#: help.php:25
+msgid ""
+"Note : Registered New Staff button redirect on add new user page to create a "
+"new users for your staff list"
+msgstr ""
+
+#: help.php:28
+msgid "Step 3 : Staff Activate for clock in portal"
+msgstr ""
+
+#: help.php:29
+msgid ""
+"For this step you need to give them permission by activate/deactivate option."
+msgstr ""
+
+#: help.php:32
+msgid ""
+"2. Click on a update button, in the right side of all users list. after "
+"clicking a popup box appers. In this box you can see all information about "
+"selected user."
+msgstr ""
+
+#: help.php:33
+msgid ""
+"3. After clicking a popup box appers. In this box you can see all "
+"information about selected user. change the status as activate (if not "
+"activated)"
+msgstr ""
+
+#: help.php:34
+msgid "4. Click on Update staff button"
+msgstr ""
+
+#: help.php:35
+msgid "After these steps, Selected user will activated."
+msgstr ""
+
+#: help.php:39
+msgid "Staff End"
+msgstr ""
+
+#: help.php:42
+msgid "After login as staff. All users will Office IN/Out and Lunch IN/Out "
+msgstr ""
+
+#: help.php:43
+msgid "Also submit daily reports"
+msgstr ""
+
+#: help.php:47
+msgid ""
+"A authoried activate staff members will show a leave request page with clock "
+"in portal plugin page"
+msgstr ""
+
+#: help.php:48
+msgid "To make a new leave request, we will follow the steps given below:"
+msgstr ""
+
+#: help.php:49
+msgid "1. Go to  leave request menu (Clock in Portal --->> Leave Request)"
+msgstr ""
+
+#: help.php:50
+msgid ""
+"2. Click on Add New request button and set the all required field leave "
+"request title, short description, start and end date"
+msgstr ""
+
+#: help.php:51
+msgid "After these steps, Now a new leave request will added on list."
+msgstr ""
+
+#: help.php:52
+msgid ""
+"Note : The request to leave can be updated according to the requirement, but "
+"before the administrator has not approved or rejected it."
+msgstr ""
+
+#: help.php:55
+msgid "Holiday"
+msgstr ""
+
+#: help.php:56
+msgid "All upcoming holiday and events will show on this page"
+msgstr ""
+
+#: help.php:60
+msgid "Get daily to yearly reports and export it. "
+msgstr ""
+
+#: help.php:65
+msgid "Shortcode For Frontend Portal"
+msgstr ""
+
+#: help.php:69
+msgid "To use shortcode [WL_CIP_PORTAL] "
+msgstr ""
+
+#: help.php:70
+msgid ""
+"Just put this shortcode in any post/page to get frontend portal for users "
+"'[WL_CIP_PORTAL]' "
+msgstr ""
+
+#: help.php:74
+msgid "Other Options"
+msgstr ""
+
+#: help.php:80
+msgid ""
+"After login as staff. All users list will show on this section with Office "
+"IN/Out and Lunch IN/Out time"
+msgstr ""
+
+#: help.php:81
+msgid "Also see and update submit daily reports and time"
+msgstr ""
+
+#: help.php:84
+msgid "Add a New Holiday/Event"
+msgstr ""
+
+#: help.php:85
+msgid ""
+"In this section. You can add a upcoming event and holiday for your staff"
+msgstr ""
+
+#: help.php:86
+msgid "To add a new Holiday/Event, we will follow the steps given below:"
+msgstr ""
+
+#: help.php:87
+msgid "1. Go to holiday/event menu (Clock in Portal --->> Holiday/event)"
+msgstr ""
+
+#: help.php:88
+msgid ""
+"2. Click on Add new holiday/event button and setup the all required field "
+"with new holiday/event name."
+msgstr ""
+
+#: help.php:89
+msgid "After these steps, Now a new holiday/event will added on list."
+msgstr ""
+
+#: help.php:92
+msgid "Staff leave request"
+msgstr ""
+
+#: help.php:93
+msgid ""
+"In this section. You can see all staff requests for leave and take a action "
+"as approved and cancelled"
+msgstr ""
+
+#: help.php:96
+msgid "Manage Reports"
+msgstr ""
+
+#: help.php:97
+msgid ""
+"In this section. You can see/edited your staff reports as daily/monthly/year "
+"based "
+msgstr ""
+
+#: help.php:103
+msgid "General Settings : Set Time & date formate "
+msgstr ""
+
+#: help.php:104
+msgid "Staff Settings : Show/Hide holiday and report submission section "
+msgstr ""
+
+#: help.php:105
+msgid "Message and text : All Message and text will set as your choice "
+msgstr ""
+
+#: help.php:111
+msgid "Watch Tutorials"
+msgstr ""
+
+#: help.php:114
+msgid "Tutorial #1"
+msgstr ""
+
+#: help.php:116
+msgid "Tutorial #2"
+msgstr ""
+
+#: holidays.php:1
+msgid "Holidays Management"
+msgstr ""
+
+#: holidays.php:51
+msgid " Add New Holiday"
+msgstr ""
+
+#: holidays.php:56 subscribers/staff-holidays.php:1
+msgid "Official Holidays"
+msgstr ""
+
+#: holidays.php:69 holidays.php:132 holidays.php:163 holidays.php:407
+#: holidays.php:445 subscribers/staff-holidays.php:20
+#: subscribers/staff-holidays.php:75
+msgid "Holiday Name"
+msgstr ""
+
+#: holidays.php:71 holidays.php:134 subscribers/staff-attendance.php:458
+#: subscribers/staff-attendance.php:529 subscribers/staff-attendance.php:590
+#: subscribers/staff-holidays.php:22 subscribers/staff-holidays.php:77
+msgid "Day(s)"
+msgstr ""
+
+#: holidays.php:159
+msgid "Add New Holiday"
+msgstr ""
+
+#: holidays.php:168 holidays.php:411 holidays.php:453 staff-request.php:469
+#: staff-request.php:525 subscribers/staff-reports.php:230
+#: subscribers/staff-request.php:144 subscribers/staff-request.php:436
+#: subscribers/staff-request.php:488
+msgid "Start Date"
+msgstr ""
+
+#: holidays.php:173 holidays.php:415 holidays.php:460 staff-request.php:473
+#: staff-request.php:529 subscribers/staff-reports.php:232
+#: subscribers/staff-request.php:149 subscribers/staff-request.php:440
+#: subscribers/staff-request.php:495
+msgid "End Date"
+msgstr ""
+
+#: holidays.php:180 holidays.php:471
+msgid "Enable"
+msgstr "चालू करना"
+
+#: holidays.php:181 holidays.php:472
+msgid "Disable"
+msgstr "बंद करना"
+
+#: holidays.php:205
+msgid "Holiday Details"
+msgstr ""
+
+#: holidays.php:227
+msgid "Update Holiday Details"
+msgstr ""
+
+#: holidays.php:235
+msgid "Update Holiday"
+msgstr ""
+
+#: holidays.php:419 staff-request.php:477 staff-request.php:533
+#: subscribers/staff-request.php:444
+msgid "Leaves (In Days)"
+msgstr ""
+
+#: our-products.php:13
+msgid "Responsive WordPress Themes & Plugins"
+msgstr ""
+
+#: our-products.php:22
+msgid "Themes"
+msgstr ""
+
+#: our-products.php:23
+msgid "Plugins"
+msgstr ""
+
+#: our-products.php:24
+msgid "Offers"
+msgstr ""
+
+#: our-products.php:32
+msgid "WordPress Themes"
+msgstr ""
+
+#: our-products.php:47
+msgid "BeautySpa- Beauty Salon Theme"
+msgstr ""
+
+#: our-products.php:48 our-products.php:78 our-products.php:106
+msgid "Tags:"
+msgstr ""
+
+#: our-products.php:48
+msgid ""
+"Customize Front Page, Multilingual, Complete Documentation, Theme Option "
+"Panel, Unlimited Color Skins, Multiple Background Patterns, Multiple Theme "
+"Templates, 5 Portfolio Layout, 3 Page Layout and many more."
+msgstr ""
+
+#: our-products.php:50 our-products.php:80 our-products.php:108
+msgid "Description:"
+msgstr ""
+
+#: our-products.php:50
+msgid ""
+"BeautySpa is versatile health care business WordPress theme suitable for "
+"spa, spa salon, sauna, massage , medical business, massage center, beauty "
+"center, eCommerce and beauty salon websites."
+msgstr ""
+
+#: our-products.php:77
+msgid "Personal Premium Theme"
+msgstr ""
+
+#: our-products.php:78
+msgid ""
+"clean, responsive, portfolio, blog, e-commerce, Business, WordPress, dark, "
+"real estate, shop, restaurant, ele…"
+msgstr ""
+
+#: our-products.php:80
+msgid ""
+"Personal Premium is a powerful and flexible, customizable and extensively "
+"developed, wonderfully lightweight and mobile friendly, easy to use and "
+"intuitively structured. Personal Premium is a highly customizable and SEO "
+"friendly responsive WordPress theme you have access to unlimited color "
+"variations, multiple different layout options, shortcode modules, and much "
+"more."
+msgstr ""
+
+#: our-products.php:89 our-products.php:117
+msgid "Demo"
+msgstr ""
+
+#: our-products.php:90 our-products.php:118
+msgid "Buy Now"
+msgstr ""
+
+#: our-products.php:105
+msgid "Explora- Ultimate Multi-Purpose WordPress Theme"
+msgstr ""
+
+#: our-products.php:106
+msgid ""
+"clean, responsive, portfolio, blog, e-commerce, Business, WordPress, "
+"Corporate, dark, real estate, shop, restaurant, ele…"
+msgstr ""
+
+#: our-products.php:108
+msgid ""
+"Explora Premium is a multi-purpose responsive theme coded & designed with a "
+"lot of care and love. You can use it for your business, portfolio, blogging "
+"or any type of site. "
+msgstr ""
+
+#: pro_features.php:31
+msgid "News Letter Subscriptions APIs"
+msgstr ""
+
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:84
+msgid "Break In"
+msgstr ""
+
+#: public/inc/controllers/WL_CIP_FREE_Portal_Shotcode.php:86
+msgid "Break Out"
+msgstr ""
+
+#: public/inc/helpers/WL_CIP_FREE_Helper.php:192
+#: subscribers/staff-attendance.php:949 subscribers/staff-reports.php:463
+msgid ""
+"Sorry! Your account is not activated. Please contact to your higher "
+"authority regarding your Inactive account."
+msgstr ""
+
+#: reports.php:55 staff-request.php:39 subscribers/staff-reports.php:174
+msgid "Mange Reports"
+msgstr ""
+
+#: reports.php:63
+msgid "Staff(s)"
+msgstr ""
+
+#: reports.php:81
+msgid "No Staff Available"
+msgstr ""
+
+#: reports.php:86 staff-request.php:46
+msgid "Filter"
+msgstr ""
+
+#: reports.php:121 subscribers/staff-reports.php:215
+msgid "Previous Three Month"
+msgstr ""
+
+#: reports.php:122 subscribers/staff-reports.php:216
+msgid "Previous Six Month"
+msgstr ""
+
+#: reports.php:123 subscribers/staff-reports.php:217
+msgid "Previous Nine Month"
+msgstr ""
+
+#: reports.php:124 subscribers/staff-reports.php:218
+msgid "Previous One Year"
+msgstr ""
+
+#: reports.php:129
+msgid "All Days"
+msgstr ""
+
+#: reports.php:130
+msgid "Only Attend days"
+msgstr ""
+
+#: reports.php:131
+msgid "Only Absent Days"
+msgstr ""
+
+#: reports.php:134 subscribers/staff-reports.php:221
+msgid "Get Report"
+msgstr ""
+
+#: reports.php:210 reports.php:752 reports.php:935
+#: subscribers/staff-reports.php:250 subscribers/staff-reports.php:453
+msgid "Break Time"
+msgstr ""
+
+#: reports.php:212 reports.php:754 subscribers/staff-reports.php:252
+#: subscribers/staff-reports.php:455
+msgid "IP"
+msgstr ""
+
+#: reports.php:709
+msgid "Sorry! This user doesn't exist."
+msgstr ""
+
+#: reports.php:727 staff-request.php:240 subscribers/staff-request.php:96
+msgid "No data Found"
+msgstr ""
+
+#: reports.php:823
+msgid "View Record"
+msgstr ""
+
+#: reports.php:840
+msgid "Edit Record"
+msgstr ""
+
+#: reports.php:846
+msgid "Update"
+msgstr ""
+
+#: reports.php:939 reports.php:1020 subscribers/staff-reports.php:536
+msgid "Working Hours"
+msgstr ""
+
+#: reports.php:951 reports.php:1032 subscribers/staff-reports.php:548
+msgid "Work Report"
+msgstr ""
+
+#: settings/settings.php:60 settings/settings.php:69
+msgid "General Settings"
+msgstr "सामान्य सेटिंग्स"
+
+#: settings/settings.php:62
+msgid "Message & Text"
+msgstr ""
+
+#: settings/settings.php:74
+msgid "TimeZone"
+msgstr "शुरू करने का समय"
+
+#: settings/settings.php:86
+msgid "Date Format"
+msgstr ""
+
+#: settings/settings.php:87 settings/settings.php:91
+msgid "change format"
+msgstr ""
+
+#: settings/settings.php:90
+msgid "Time Format"
+msgstr ""
+
+#: settings/settings.php:94
+msgid "Select yes if you have \"Woocommerce\" installed"
+msgstr ""
+
+#: settings/settings.php:96 settings/settings.php:113 settings/settings.php:120
+msgid "Yes"
+msgstr "हाँ"
+
+#: settings/settings.php:97 settings/settings.php:114 settings/settings.php:121
+msgid "No"
+msgstr ""
+
+#: settings/settings.php:106
+msgid "Staff Dashboard Settings"
+msgstr ""
+
+#: settings/settings.php:111
+msgid "Show Holidays"
+msgstr "कोई संग्रह नही मिला"
+
+#: settings/settings.php:118
+msgid "Enable Report Submission"
+msgstr ""
+
+#: settings/settings.php:130
+msgid "Message & Text Settings"
+msgstr ""
+
+#: settings/settings.php:135
+msgid "Clock In Button Text"
+msgstr ""
+
+#: settings/settings.php:139
+msgid "Clock Out Button Text"
+msgstr ""
+
+#: settings/settings.php:144
+msgid "Lunch In Button Text"
+msgstr ""
+
+#: settings/settings.php:148
+msgid "Lunch Out Button Text"
+msgstr ""
+
+#: settings/settings.php:152
+msgid "Clock In Alert Message"
+msgstr ""
+
+#: settings/settings.php:156
+msgid "Clock Out Alert Message 1"
+msgstr ""
+
+#: settings/settings.php:160
+msgid "Clock Out Alert Message 2"
+msgstr ""
+
+#: settings/settings.php:164
+msgid "Lunch In Alert Message"
+msgstr ""
+
+#: settings/settings.php:168
+msgid "Lunch Out Alert Message 1"
+msgstr ""
+
+#: settings/settings.php:172
+msgid "Lunch Out Alert Message 2"
+msgstr ""
+
+#: staff-request.php:1
+msgid "Leave Request Management"
+msgstr ""
+
+#: staff-request.php:50
+msgid "This Month"
+msgstr ""
+
+#: staff-request.php:51
+msgid "Previous Month"
+msgstr ""
+
+#: staff-request.php:52
+msgid "Next Three Month"
+msgstr ""
+
+#: staff-request.php:53
+msgid "Next Six Month"
+msgstr ""
+
+#: staff-request.php:54
+msgid "Next Nine Month"
+msgstr ""
+
+#: staff-request.php:55
+msgid "Next One Year"
+msgstr ""
+
+#: staff-request.php:60
+msgid "All"
+msgstr ""
+
+#: staff-request.php:61
+msgid "Pending"
+msgstr ""
+
+#: staff-request.php:62
+msgid "Approved"
+msgstr ""
+
+#: staff-request.php:63
+msgid "Cancelled"
+msgstr ""
+
+#: staff-request.php:66
+msgid "Filtered"
+msgstr ""
+
+#: staff-request.php:100 subscribers/staff-request.php:21
+msgid "Staff Request Zone"
+msgstr ""
+
+#: staff-request.php:113 staff-request.php:248 staff-request.php:461
+#: staff-request.php:514 subscribers/staff-request.php:33
+#: subscribers/staff-request.php:103 subscribers/staff-request.php:133
+#: subscribers/staff-request.php:428 subscribers/staff-request.php:473
+msgid "Title"
+msgstr "शीर्षक"
+
+#: staff-request.php:114 staff-request.php:249 staff-request.php:465
+#: staff-request.php:520
+msgid "Short Description about Leave"
+msgstr ""
+
+#: staff-request.php:116 staff-request.php:251 subscribers/staff-request.php:36
+#: subscribers/staff-request.php:106
+msgid "Request For"
+msgstr ""
+
+#: staff-request.php:206 staff-request.php:225
+#: subscribers/staff-attendance.php:504 subscribers/staff-attendance.php:575
+#: subscribers/staff-holidays.php:65 subscribers/staff-request.php:78
+msgid "For "
+msgstr ""
+
+#: staff-request.php:276 subscribers/staff-request.php:172
+msgid "Staff Request Details"
+msgstr ""
+
+#: staff-request.php:298 subscribers/staff-request.php:194
+msgid "Update Staff Request Details"
+msgstr ""
+
+#: staff-request.php:306 subscribers/staff-request.php:206
+msgid "Update Request"
+msgstr ""
+
+#: staffs.php:1
+msgid "Staffs Management"
+msgstr ""
+
+#: staffs.php:34 staffs.php:87 staffs.php:103 staffs.php:151 staffs.php:535
+#: staffs.php:590
+msgid "Role"
+msgstr ""
+
+#: staffs.php:169
+msgid "Add User As Staff"
+msgstr ""
+
+#: staffs.php:173
+msgid "Select User"
+msgstr ""
+
+#: staffs.php:190 staffs.php:539 staffs.php:606
+msgid "Username"
+msgstr ""
+
+#: staffs.php:193 staffs.php:198 staffs.php:207 staffs.php:225
+msgid "Required field."
+msgstr ""
+
+#: staffs.php:231 staffs.php:648
+msgid "Active"
+msgstr ""
+
+#: staffs.php:232 staffs.php:649
+msgid "Inactive"
+msgstr ""
+
+#: staffs.php:238
+msgid "Add Staff"
+msgstr ""
+
+#: staffs.php:240
+msgid "Registered New Staff"
+msgstr ""
+
+#: staffs.php:257
+msgid "Staff Details"
+msgstr ""
+
+#: staffs.php:279
+msgid "Update Staff Details"
+msgstr ""
+
+#: staffs.php:543 staffs.php:614
+msgid "First Name"
+msgstr ""
+
+#: staffs.php:547 staffs.php:618
+#, fuzzy
+#| msgid "Name"
+msgid "Last Name"
+msgstr "नाम"
+
+#: staffs.php:551 staffs.php:622
+msgid "Email"
+msgstr ""
+
+#: subscribers/staff-attendance.php:215
+msgid "Welcome "
+msgstr ""
+
+#: subscribers/staff-attendance.php:346
+msgid "Monthly Stats"
+msgstr ""
+
+#: subscribers/staff-attendance.php:347
+msgid "UpComing HoliDays"
+msgstr ""
+
+#: subscribers/staff-attendance.php:348
+msgid "Today Event"
+msgstr ""
+
+#: subscribers/staff-attendance.php:442
+msgid "Total Absent"
+msgstr ""
+
+#: subscribers/staff-attendance.php:456 subscribers/staff-attendance.php:514
+msgid "Event/Holiday Name"
+msgstr ""
+
+#: subscribers/staff-attendance.php:509 subscribers/staff-holidays.php:70
+msgid "No Holiday Found."
+msgstr "कोई संग्रह नही मिला."
+
+#: subscribers/staff-attendance.php:516
+msgid "Leave"
+msgstr ""
+
+#: subscribers/staff-attendance.php:526 subscribers/staff-attendance.php:587
+msgid "Event"
+msgstr "घटना"
+
+#: subscribers/staff-attendance.php:527 subscribers/staff-attendance.php:588
+msgid "description"
+msgstr ""
+
+#: subscribers/staff-attendance.php:582
+msgid "No Record Found."
+msgstr "कोई सदस्य नही पाया."
+
+#: subscribers/staff-attendance.php:952 subscribers/staff-reports.php:466
+msgid "Sorry! this page is only available for Registered Staffs"
+msgstr ""
+
+#: subscribers/staff-attendance.php:1109
+msgid "Success:"
+msgstr "सफलता:"
+
+#: subscribers/staff-attendance.php:1109
+msgid "Report submitted successfully."
+msgstr "सफलतापूर्वक, डेटा फिर से कायम ."
+
+#: subscribers/staff-reports.php:197
+msgid "Show Report"
+msgstr ""
+
+#: subscribers/staff-reports.php:254 subscribers/staff-reports.php:457
+msgid "Report"
+msgstr ""
+
+#: subscribers/staff-reports.php:441
+msgid "Download Report"
+msgstr ""
+
+#: subscribers/staff-reports.php:532
+msgid "break Time"
+msgstr ""
+
+#: subscribers/staff-reports.php:565
+msgid "View Report"
+msgstr ""
+
+#: subscribers/staff-request.php:16 subscribers/staff-request.php:129
+msgid "Add New Request"
+msgstr ""
+
+#: subscribers/staff-request.php:34 subscribers/staff-request.php:104
+msgid "Short Description about Request"
+msgstr ""
+
+#: subscribers/staff-request.php:135
+msgid "Required A text for Title."
+msgstr ""
+
+#: subscribers/staff-request.php:139
+msgid "Short Description"
+msgstr ""
+
+#: subscribers/staff-request.php:141
+msgid "Required A text for Short Description."
+msgstr ""
+
+#: subscribers/staff-request.php:146
+msgid "Select Start date"
+msgstr ""
+
+#: subscribers/staff-request.php:151
+msgid "Select End date"
+msgstr ""
+
+#: subscribers/staff-request.php:155
+msgid "Add Request"
+msgstr ""
+
+#: subscribers/staff-request.php:408
+msgid "Request added successfully."
+msgstr ""
+
+#: subscribers/staff-request.php:432
+msgid "Request Short Description"
+msgstr ""
+
+#: subscribers/staff-request.php:482
+msgid "Staff Request Description"
+msgstr ""

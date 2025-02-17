@@ -1,0 +1,89 @@
+.digit {
+  position: relative;
+  float: left;
+  width: 46px;
+  height: 61px;
+  background-color: #fff;
+  border-radius: 9px;
+	text-align: center;
+  font-family: Oswald, sans-serif;
+  font-size: 38px;
+  margin-right: 6px;
+}
+.cip_front_portal h1.title.text-center {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    text-shadow: rgba(235, 233, 233, 0.44) 2px 3px 0.35em;
+    margin-bottom: 3px;
+}
+.cip_front_portal .digit.hour:after{
+  content: ":";
+  color: #fff;
+}
+.cip_front_portal .digit.hour:after, .cip_front_portal .digit.min:after, .cip_front_portal .digit.sec:after {
+    content: ":";
+    color: #fff;
+    position: absolute;
+    width: 100px;
+    left: 10px;
+    bottom: -27px;
+    font-size: 51px;
+    height: 100px;
+}
+.col-md-12.portal_form {
+    padding: 6%;
+    padding-bottom: 0px;
+}
+#cip_free_form button {
+    padding: 12px 62px;
+    font-size: 17px;
+    margin-right: 19px;
+    margin-bottom: 12px;
+}
+#cip_free_form input {
+    padding: 13px 26px;
+    height: auto;
+    border-radius: 24px;
+}
+.cip_front_portal .cip_clock {
+    border-radius: 20px;
+}
+.staff_details p {
+    font-size: 17px;
+    color: #fff;
+    line-height: 9px;
+    border: 1px dashed;
+    padding: 14px;
+    margin: 0px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+span.staff_detail_p {
+    float: right;
+}
+#loginform input[type="text"], #loginform input[type="password"] {
+    font-size: 13px;
+    border-radius: 20px;
+    padding-left: 15px;
+}
+.login-remember label {
+    color: #fff;
+}
+input#wp-submit {
+    padding: 11px 26px;
+    font-size: 15px;
+    background: -webkit-linear-gradient(40deg,#c7da3a,#50b04f)!important;
+    background: -o-linear-gradient(40deg,#c7da3a,#50b04f)!important;
+    border-radius: 25px;
+    background: linear-gradient(40deg,#c7da3a,#50b04f)!important;
+}
+h3.title.text-center {
+    color: #fff;
+    padding: 0px;
+    font-size: 22px;
+    font-weight: 500;
+}
+.staff_details {
+    margin-bottom: 26px;
+}

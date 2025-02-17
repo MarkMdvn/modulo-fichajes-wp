@@ -1,0 +1,382 @@
+.cip-setup-wizard {
+    text-align: center;
+}
+
+body.cip-setup-wizard.wp-core-ui.wl_custom {
+    margin: 65px auto 24px;
+    box-shadow: none;
+    background: #f1f1f1;
+    padding: 0;
+    padding-left: 32%;
+    padding-right: 32%;
+    background-size: cover;
+    background-image: url(../new-assets/images/admin.jpg);
+}
+
+.cip-setup-steps {
+    padding: 0 0 24px;
+    margin: 0;
+    list-style: none outside;
+    overflow: hidden;
+    color: #ccc;
+    width: 100%;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+.cip-setup-steps li.active {
+    border-color: #3ab32c;
+    color: #3ab32c;
+    font-weight: 700;
+}
+
+.cip-setup-steps li {
+    width: 100%;
+    float: left;
+    padding: 0 0 .8em;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid #ccc;
+    line-height: 1.4;
+}
+
+.cip-setup-steps li.active::before {
+    border-color: #3ab32c;
+}
+
+.cip-setup-steps li::before {
+    content: "";
+    border: 4px solid #ccc;
+    border-radius: 100%;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -6px;
+    margin-bottom: -8px;
+    background: #fff;
+    box-sizing: unset;
+}
+
+.cip-setup-content {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .13);
+    padding: 2em;
+    margin: 0 0 20px;
+    background: #fff;
+    overflow: hidden;
+    zoom: 1;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.cip-setup-content p.store-setup {
+    margin-top: 0;
+}
+
+.cip-setup-content p {
+    margin: 20px 0;
+    font-size: 1em;
+    line-height: 1.75;
+    color: #666;
+}
+
+.cip-setup-content label {
+    color: #0c0c0ca3;
+    font-size: 16px;
+    margin-bottom: .5em;
+    margin-top: .85em;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.cip-setup-wizard .form-body {
+    margin-bottom: 2%;
+}
+
+.location-input.dropdown {
+    width: 100%;
+}
+
+.cip-setup-wizard .wp-picker-input-wrap label {
+    margin-top: 0px;
+    display: inline;
+}
+
+.cip-setup-wizard .wp-picker-container input[type=text].wp-color-picker {
+    width: 40%;
+    padding: 4px 7px;
+    margin-left: 7px;
+}
+
+.location-input {
+    border: 1px solid #aaa;
+    border-color: #ddd;
+    border-radius: 4px;
+    height: 30px;
+    width: calc(105% - 8px - 24px - 2px);
+    padding-left: 8px;
+    padding-right: 24px;
+    font-size: 16px;
+    color: #444;
+    background-color: #fff;
+    display: inline-block;
+}
+
+.select2-hidden-accessible {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+}
+
+.cip-setup-content p:last-child {
+    margin-bottom: 0;
+}
+
+.cip-setup-actions {
+    overflow: hidden;
+    margin: 20px 0 0;
+    position: relative;
+}
+
+.cip-setup-content p {
+    margin: 20px 0;
+    font-size: 1em;
+    line-height: 1.75;
+    color: #666;
+}
+
+.step {
+    text-align: center;
+}
+
+.cip-setup-actions .button-primary {
+    background: linear-gradient(to right, #84d9d2, #07cdae);
+    box-shadow: 0px 3px 8.3px 0.7px rgba(173, 119, 243, 0.25);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 36px;
+    text-shadow: none;
+    margin: 0;
+    font-size: 20px;
+    opacity: 1;
+    color: #fff;
+    cursor: pointer;
+}
+
+span.glyphicon.glyphicon-chevron-up:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f062";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+
+span.glyphicon.glyphicon-chevron-down:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f063";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+
+i.glyphicon.glyphicon-time:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f017";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    color: #a05aff;
+}
+
+i.gj-icon.chevron-right:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f061";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    color: #a05aff;
+}
+
+i.gj-icon.chevron-left:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f060";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    color: #a05aff;
+}
+
+.bootstrap-timepicker-widget table td input {
+    width: 36px;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px 4px;
+}
+
+.designation-step button.button.wp-color-result {
+    border: 0;
+}
+
+.designation-step span.wp-color-result-text {
+    margin: 1px;
+}
+
+input.r_name {
+    width: 48% !important;
+    display: inline-block !important;
+    margin-bottom: 4px;
+    margin-right: 8px;
+}
+
+input.r_email {
+    width: 48% !important;
+    display: inline-block !important;
+}
+
+input[type="text"],
+input[type="number"],
+select#cip_timezone,
+textarea {
+    height: auto;
+    padding: 8px 26px;
+    border: 1px solid #ccccccb3;
+    /* box-shadow: 1px 1px 5px #9f9a9a99; */
+    border-radius: 2px;
+    border-radius: 6px;
+    border-color: #007cba;
+}
+
+.btn-success {
+    background-color: #00c851 !important;
+    color: #fff !important;
+}
+
+.btn-danger {
+    background-color: #ff3547 !important;
+    color: #fff !important;
+}
+
+li.done a {
+    color: rgb(58, 179, 44) !important;
+}
+
+.cip-setup-steps li.done {
+    border-bottom: 4px solid rgb(58, 179, 44);
+}
+
+.cip-setup-steps li.done::before {
+    border: 4px solid #3ab32c;
+}
+
+.cip-setup-wizard .logo img {
+    width: 55%;
+    height: auto;
+    margin-bottom: 2%;
+}
+
+a.cip-setup-footer-links {
+    color: #fff;
+    border: 2px solid;
+    padding: 10px 19px;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+a.cip-setup-footer-links:hover {
+    color: red;
+    text-decoration: none;
+}
+
+#custom_help_widget p.logged_in_users {
+    border: 1px dashed #ccc;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 10px 0px;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+}
+
+#custom_help_widget span.cip_user_status {
+    float: right;
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+    color: #fff;
+}
+
+#custom_help_widget span.cip_user_status.green {
+    background-color: #45bc4a;
+}
+
+#custom_help_widget span.cip_user_status.red {
+    background-color: #ef4438;
+}
+
+#custom_help_widget p.cip_no_users {
+    color: red;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#custom_help_widget h3.users_status_main {
+    background-color: #0184ba;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px;
+}
+
+select {
+    max-width: 100% !important;
+}
+
+#report_table_wrapper button.dt-button {
+    border-color: #ccc;
+    border: 1px solid #1da2f5;
+    background: #1f9dfa;
+    color: #fff;
+    padding: 4px 15px;
+    box-shadow: 2px 1px 4px 0px #ccc;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+#report_table_wrapper button.dt-button:hover {
+    background: #fff;
+    color: #1f9dfa;
+}
+
+.wl_im h2 {
+    font-size: 22px;
+}
+
+div#report_table_length {
+    margin-left: 10px;
+}
+
+p.total_working_hour {
+    background: #32373c;
+    color: #fff;
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 17px;
+}
