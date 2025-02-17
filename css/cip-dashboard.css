@@ -387,14 +387,11 @@ div#wpbody-content {
     border-radius: 26px;
     display: flow-root;
     background: #85D8CE;
-    background: linear-gradient(135deg, #085078, #85D8CE);
-    box-shadow: rgba(136, 136, 136, 0.57) 0.2em 0.5em 0.35em;
+    background:  #ED008C;
 }
 #cip_clock button.btn.peach-gradient.btn-mg {
-    background: -webkit-linear-gradient(40deg,#c7da3a,#50b04f)!important;
-    background: -o-linear-gradient(40deg,#c7da3a,#50b04f)!important;
     border-radius: 25px;
-    background: linear-gradient(40deg,#c7da3a,#50b04f)!important;
+    background: black !important;
 }
 #cip_clock button.btn.purple-gradient.btn-mg {
     background: -webkit-linear-gradient(40deg,#d9795d,#e41e0d)!important;

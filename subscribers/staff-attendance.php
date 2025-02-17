@@ -209,8 +209,43 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 		?>
 		<div class="clocking">
 
+            <div class="custom-nav-bar">
+                <div class="nav-left">
+                    <!-- Coloca aquí la URL de tu logo -->
+                    <img src="https://solucionesmarketplace.es/wp-content/uploads/2024/09/logo-epoint-1-1024x312.png" alt="Logo">
+                </div>
+                <div class="nav-right">
+                    <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">Dashboard</a>
+                    <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-reports">Reports</a>
+                    <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-holidays">Vacaciones</a>
+                    <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-request">Dejar Request</a>
+                </div>
+            </div>
+
+            <!-- CSS para la barra de navegación -->
+            <style>
+                .custom-nav-bar {
+                    background: white;
+                    padding: 10px 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .custom-nav-bar .nav-left img {
+                    height: 80px;
+                }
+                .custom-nav-bar .nav-right a {
+                    color: black;
+                    text-decoration: none;
+                    margin-left: 15px;
+                    font-weight: 500;
+                }
+                .custom-nav-bar .nav-right a:hover {
+                    text-decoration: underline;
+                }
+            </style>
 			<div>
-				<h3 class="info"><?php esc_html_e('Welcome ' .ucwords($fname." ".$lname).' !!!', CIP_FREE_TXTDM );?></h3>
+				<h3 class="info"><?php esc_html_e('Buenos días ' .ucwords($fname." ".$lname).' ', CIP_FREE_TXTDM );?></h3>
 				<hr>
 			</div>
 
@@ -277,13 +312,13 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 
 					<div class="col-md-6 clock-group-btn pull-right">
 
-						<button <?php echo esc_attr($off_in_disable); ?> type="button" id="office-in-btn"  name="office-in-btn" class="btn peach-gradient btn-mg my-2 mx-2" onclick="return OfficeClockInOut('office-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in my-2" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<?php esc_html_e( isset($cip_settings['clock_in_btn_text']) ? $cip_settings['clock_in_btn_text'] : "Office IN" ,CIP_FREE_TXTDM); ?></button>
+						<button <?php echo esc_attr($off_in_disable); ?> type="button" id="office-in-btn"  name="office-in-btn" class="btn peach-gradient btn-mg my-2 mx-2" onclick="return OfficeClockInOut('office-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in my-2" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<?php esc_html_e( isset($cip_settings['clock_in_btn_text']) ? $cip_settings['clock_in_btn_text'] : "Registrar entrada" ,CIP_FREE_TXTDM); ?></button>
 
-						<button <?php if($off_in_disable != "disabled") { echo esc_attr( 'disabled' ); }  echo esc_attr($off_out_disable); ?> type="button" id="office-out-btn" name="office-out-btn" class="btn purple-gradient btn-mg my-2 mx-2" onclick="return OfficeClockInOut('office-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> <?php esc_html_e( isset($cip_settings['clock_out_btn_text']) ? $cip_settings['clock_out_btn_text'] : "Office Out" ,CIP_FREE_TXTDM); ?></button>
+						<button <?php if($off_in_disable != "disabled") { echo esc_attr( 'disabled' ); }  echo esc_attr($off_out_disable); ?> type="button" id="office-out-btn" name="office-out-btn" class="btn purple-gradient btn-mg my-2 mx-2" onclick="return OfficeClockInOut('office-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> <?php esc_html_e( isset($cip_settings['clock_out_btn_text']) ? $cip_settings['clock_out_btn_text'] : "Registrar salida" ,CIP_FREE_TXTDM); ?></button>
 
-						<button <?php echo esc_attr($lunch_in_disable); ?> type="button" id="lunch-in-btn" name="lunch-in-btn" class="btn peach-gradient btn-mg my-2 mx-2" onclick="return LunchClockInOut('lunch-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;<?php esc_html_e( isset($cip_settings['lunch_in_btn_text']) ? $cip_settings['lunch_in_btn_text'] : "Lunch In" ,CIP_FREE_TXTDM); ?></button>
+						<button <?php echo esc_attr($lunch_in_disable); ?> type="button" id="lunch-in-btn" name="lunch-in-btn" class="btn peach-gradient btn-mg my-2 mx-2" onclick="return LunchClockInOut('lunch-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;<?php esc_html_e( isset($cip_settings['lunch_in_btn_text']) ? $cip_settings['lunch_in_btn_text'] : "Comenzar Merienda" ,CIP_FREE_TXTDM); ?></button>
 
-						<button <?php if($lunch_in_disable != "disabled") { esc_html_e( 'disabled' ); } echo esc_attr($lunch_out_disable); ?> type="button" id="lunch-out-btn" name="lunch-out-btn" class="btn purple-gradient btn-mg my-2 mx-2" onclick="return LunchClockInOut('lunch-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> <?php esc_html_e( isset($cip_settings['lunch_out_btn_text']) ? $cip_settings['lunch_out_btn_text'] : "Lunch Out" ,CIP_FREE_TXTDM); ?></button>
+						<button <?php if($lunch_in_disable != "disabled") { esc_html_e( 'disabled' ); } echo esc_attr($lunch_out_disable); ?> type="button" id="lunch-out-btn" name="lunch-out-btn" class="btn purple-gradient btn-mg my-2 mx-2" onclick="return LunchClockInOut('lunch-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> <?php esc_html_e( isset($cip_settings['lunch_out_btn_text']) ? $cip_settings['lunch_out_btn_text'] : "Finalizar Merienda" ,CIP_FREE_TXTDM); ?></button>
 
 					</div>
 				</div>
@@ -291,16 +326,16 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 			<!-- End -->
 
 			<div id="break-clock-div" class="test-left col-md-12" style="margin-top: 2%;">
-				<h1>Break</h1><br>
+				<h1>Descanso</h1><br>
 				<?php if(@$break_out_message) { ?>
 				<div id='lunch-out-result' class='alert alert-info'><?php echo wp_kses_post( $break_out_message, CIP_FREE_TXTDM ); ?></div>
 				<?php } if($break_in_message) { ?>
 				<div id='break-out-result' class='alert alert-info'><?php echo wp_kses_post( $break_in_message, CIP_FREE_TXTDM ); ?></div>
 				<?php } ?>
 				<?php if($break_out_message == "") { ?>
-					<button <?php echo esc_attr($break_in_disable); ?> type="button" id="break-in-btn" name="break-in-btn" class="btn btn-info btn-sm custom_btn_atten" onclick="return breakClockInOut('break-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in" aria-hidden="true"></i> Start</button>
+					<button <?php echo esc_attr($break_in_disable); ?> type="button" id="break-in-btn" name="break-in-btn" class="btn btn-info btn-sm custom_btn_atten" onclick="return breakClockInOut('break-in', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-in" aria-hidden="true"></i> Comenzar</button>
 					<?php if($break_in_disable == "disabled") { ?>
-					<button <?php echo esc_attr($break_out_disable); ?> type="button" id="break-out-btn" name="break-out-btn" class="btn btn-info btn-sm custom_btn_atten" onclick="return breakClockInOut('break-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> Stop</button>
+					<button <?php echo esc_attr($break_out_disable); ?> type="button" id="break-out-btn" name="break-out-btn" class="btn btn-info btn-sm custom_btn_atten" onclick="return breakClockInOut('break-out', '<?php echo esc_attr($userid); ?>');"><i class="fas fa-sign-out" aria-hidden="true"></i> Finalizr</button>
 				<?php } } ?>
 			</div>
 
