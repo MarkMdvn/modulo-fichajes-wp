@@ -16,11 +16,22 @@ h3.info{
     margin: 20px auto;
     box-shadow: 0px 5px 7px #82848566;          
 }
-p.report-stat.red{  background: linear-gradient(40deg,#db3414,#dd9292)!important;}
-p.report-stat.blue{ 
-  background: -webkit-linear-gradient(50deg,#ff6ec4,#7873f5)!important;
-    background: linear-gradient(40deg,#ff6ec4,#7873f5)!important
-}
+  p.report-stat.red {
+    background: linear-gradient(40deg, #e74c3c, #c0392b) !important;
+    color: #fff !important;
+    padding: 10px 15px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+  p.report-stat.blue {
+    background: linear-gradient(40deg, #3498db, #2980b9) !important;
+    color: #fff !important;
+    padding: 10px 15px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
 p.report-stat{
   font-size: 53px;
   padding: 10px;
@@ -386,10 +397,10 @@ div#wpbody-content {
     width: 100%;
     border-radius: 26px;
     display: flow-root;
-    background: #85D8CE;
-    background:  #ED008C;
+    background:  black;
 }
 #cip_clock button.btn.peach-gradient.btn-mg {
+     
     border-radius: 25px;
     background: black !important;
 }

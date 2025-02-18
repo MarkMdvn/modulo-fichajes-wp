@@ -176,7 +176,70 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 		$css .= ob_get_clean();
 		wp_add_inline_style( 'clock-in-self-report-style', $css ); ?>
 
-		<h1><?php esc_html_e('Mange Reports', CIP_FREE_TXTDM );?></h1>
+        <style>
+            #wpbody {
+                padding-top: 0px !important;
+            }
+            .custom-nav-bar {
+                background: #fff !important;
+                padding: 10px 20px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+                margin: 10px auto !important;
+            }
+            .custom-nav-bar .nav-left img {
+                width: 100px !important;
+            }
+            .custom-nav-bar .nav-right {
+                display: flex !important;
+                align-items: center !important;
+            }
+            .custom-nav-bar .nav-right a {
+                color: #333 !important;
+                text-decoration: none !important;
+                margin-left: 15px !important;
+                font-weight: 500 !important;
+                transition: color 0.3s ease !important;
+                font-size: 1.5rem !important;
+            }
+            .custom-nav-bar .nav-right a:hover {
+                color: #000 !important;
+            }
+            /* Mobile adjustments to maintain a single row layout */
+            @media (max-width: 600px) {
+                .custom-nav-bar {
+                    flex-direction: row !important;
+                    justify-content: space-between !important;
+                }
+                .custom-nav-bar .nav-right a {
+                    margin-left: 10px !important;
+                }
+            }
+        </style>
+
+        <div class="custom-nav-bar">
+            <div class="nav-left">
+                <!-- Replace with your logo URL -->
+                <img src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
+            </div>
+            <div class="nav-right">
+                <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+                <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-reports">
+                    <i class="fas fa-history"></i>
+                </a>
+                <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-holidays">
+                    <i class="fas fa-umbrella-beach"></i>
+                </a>
+                <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-request">
+                    <i class="fas fa-sticky-note"></i>
+                </a>
+            </div>
+        </div>
+		<h1><?php esc_html_e('Historial', CIP_FREE_TXTDM );?></h1>
 		<!-- filter table-->
 		<?php
 			/* New code for Month filter */
@@ -199,9 +262,9 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 		<table class="table">
 			<tr>
 				<td class="sm-labels">
-					<?php esc_html_e('Show Report', CIP_FREE_TXTDM );?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<?php esc_html_e('Ver mes: ', CIP_FREE_TXTDM );?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<select id="filter_name" name="filter_name">
-						<optgroup label="Select Any Filter ( individual Months )">
+						<optgroup label="Selecciona cualquier mes">
 							<option value="1" <?php if($filter_name == "1") esc_html_e( "selected=selected" ); ?>><?php esc_html_e( $current_mnth, CIP_FREE_TXTDM );?></option>
 							<option value="2" <?php if($filter_name == "2") esc_html_e( "selected=selected" ); ?>><?php esc_html_e( $previous_mnth, CIP_FREE_TXTDM );?></option>
 							<option value="3" <?php if($filter_name == "3") esc_html_e( "selected=selected" ); ?>><?php esc_html_e( $previous_mnth_1, CIP_FREE_TXTDM );?></option>
@@ -216,14 +279,14 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 							<option value="12" <?php if($filter_name == "12") esc_html_e( "selected=selected" ); ?>><?php esc_html_e( $previous_mnth_10, CIP_FREE_TXTDM );?></option>
 							<option value="13" <?php if($filter_name == "13") esc_html_e( "selected=selected" ); ?>><?php esc_html_e( $previous_mnth_11, CIP_FREE_TXTDM );?></option>
 						</optgroup>
-						<optgroup label="Select Any Filter ( Combine Months )">
-							<option value="14" <?php if($filter_name == "14") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Previous Three Month', CIP_FREE_TXTDM );?></option>
-							<option value="15" <?php if($filter_name == "15") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Previous Six Month', CIP_FREE_TXTDM );?></option>
-							<option value="16" <?php if($filter_name == "16") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Previous Nine Month', CIP_FREE_TXTDM );?></option>
-							<option value="17" <?php if($filter_name == "17") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Previous One Year', CIP_FREE_TXTDM );?></option>
+						<optgroup label="En grupo">
+							<option value="14" <?php if($filter_name == "14") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Tres últimos meses', CIP_FREE_TXTDM );?></option>
+							<option value="15" <?php if($filter_name == "15") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Seis últimos meses', CIP_FREE_TXTDM );?></option>
+							<option value="16" <?php if($filter_name == "16") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Nueve últimos meses', CIP_FREE_TXTDM );?></option>
+							<option value="17" <?php if($filter_name == "17") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Último año', CIP_FREE_TXTDM );?></option>
 						</optgroup>
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="submit" class="btn btn-info get_report_btn"><?php esc_html_e('Get Report', CIP_FREE_TXTDM );?></button>
+					<button type="submit" class="btn btn-info get_report_btn"><?php esc_html_e('Obtener Informe', CIP_FREE_TXTDM );?></button>
 				</td>
 				<td>
 
@@ -232,9 +295,9 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				<td>&nbsp;</td>
 			</tr>
 			<tr class="custom-filter" style="display: none;">
-				<td class="sm-labels"><?php esc_html_e('Start Date', CIP_FREE_TXTDM );?></td>
+				<td class="sm-labels"><?php esc_html_e('Fecha de inicio', CIP_FREE_TXTDM );?></td>
 				<td><input type="date" id="start_date" name="start_date"></td>
-				<td class="sm-labels"><?php esc_html_e('End Date', CIP_FREE_TXTDM );?></td>
+				<td class="sm-labels"><?php esc_html_e('Fecha de finalización', CIP_FREE_TXTDM );?></td>
 				<td><input type="date" id="end_date" name="end_date"></td>
 			</tr>
 		</table>
@@ -244,27 +307,28 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 		<!-- record table-->
 		<table class="table table-stripped">
 			<thead>
-				<tr class="info main_tb_head">
-					<th>#</th>
-					<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Break Time', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Report', CIP_FREE_TXTDM );?></th>
-				<tr>
-			<thead>
+            <tr class="info main_tb_head">
+                <th>#</th>
+                <th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Tiempo de Descanso', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Horas Trabajadas', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Ubicación', CIP_FREE_TXTDM );?></th>
+                <th><?php esc_html_e('Informes', CIP_FREE_TXTDM );?></th>
+            </tr>
+
+            <thead>
 			<tbody>
 			<?php
 				/* New code for Month filter */
-				$previous_mnth_1   = date( "F-Y", strtotime( "-2 month" ) );
-				$previous_mnth_2   = date( "F-Y", strtotime( "-3 month" ) );
-				$previous_mnth_3   = date( "F-Y", strtotime( "-4 month" ) );
+				$previous_mnth_1   = date( "F-Y", strtotime( "-2 meses" ) );
+				$previous_mnth_2   = date( "F-Y", strtotime( "-3 meses" ) );
+				$previous_mnth_3   = date( "F-Y", strtotime( "-4 meses" ) );
 				$previous_mnth_4   = date( "F-Y", strtotime( "-5 month" ) );
 				$previous_mnth_5   = date( "F-Y", strtotime( "-6 month" ) );
 				$previous_mnth_6   = date( "F-Y", strtotime( "-7 month" ) );
@@ -275,7 +339,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				$previous_mnth_11  = date( "F-Y", strtotime( "-12 month" ) );
 
 				//create a file
-				if( $filter_name == "1" ) $file_name = $fname."-".$lname."-this-month-report.csv";
+				if( $filter_name == "1" ) $file_name = $fname."-".$lname."-informe-del-mes.csv";
 				elseif( $filter_name == "2" ) $file_name = $fname."-".$lname."-previous-month-report.csv";
 
 				elseif( $filter_name == "3" ) $file_name = $fname."-".$lname."-".$previous_mnth_1."-report.csv";
@@ -297,7 +361,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				elseif($filter_name == "all") $file_name = $fname."-".$lname."-all-time-report.csv";
 
 				$report_file = fopen($upload_dir_path."/".$file_name, "w") or die("Unable to create report file!");
-				$headertext = "No., Date, Name, Office In, Office Out, Lunch In, lunch Out, Breal time, Working Hours, IP, Location \n";
+				$headertext = "ID, Fecha, Nombre, Entrada, Salida, Inicio Almuerzo, Fin Almuerzo, Tiempo de descanso, Horas trabajadas, IP, Ubicación \n";
 				fwrite($report_file, $headertext);
 				$fullname = ucwords($fname." ".$lname);
 
@@ -382,7 +446,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 					<td><?php esc_html_e( $user_ip); ?></td>
 					<td><?php if(isset($row->user_location)){ esc_html_e( $row->user_location); } ?></td>
 					<td><?php if($office_in != "None") { ?>
-						<button id="view-report" name="view-report" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($date); ?>');"><?php esc_html_e('View Report', CIP_FREE_TXTDM );?></button></td>
+						<button id="view-report" name="view-report" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($date); ?>');"><?php esc_html_e('Ver Informe', CIP_FREE_TXTDM );?></button></td>
 						<?php } else { esc_html_e( 'No report'); } ?>
 				</tr>
 				<?php
@@ -394,24 +458,24 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 						//check if Sunday else no record found
 						if(date("l", strtotime($row_date)) == "Sunday") {
 							$date = date($date_format, strtotime($row_date));
-							$office_in = "Sunday";
-							$office_out = "Sunday";
-							$lunch_in = "Sunday";
-							$lunch_out = "Sunday";
-							$user_ip = "Sunday";
-							$work_hour = "Sunday";
-							$report = "No report";
-							$break_hour = 'No report';
+							$office_in = "-";
+							$office_out = "-";
+							$lunch_in = "-";
+							$lunch_out = "-";
+							$user_ip = "-";
+							$work_hour = "-";
+							$report = "-";
+							$break_hour = '-';
 						} else {
 							$date = date($date_format, strtotime($row_date));
-							$office_in = "Sorry";
-							$office_out = "No";
-							$lunch_in = "Record";
-							$lunch_out = "Found";
-							$user_ip = "None";
-							$report = "No report";
-							$work_hour = "No Report";
-							$break_hour = "No report";
+							$office_in = "-";
+							$office_out = "-";
+							$lunch_in = "-";
+							$lunch_out = "-";
+							$user_ip = "-";
+							$report = "-";
+							$work_hour = "-";
+							$break_hour = "-";
 						}
 				?>
 				<tr class="<?php if($office_in == "Sunday") esc_html_e( "success sunday_tb"); ?>">
@@ -443,23 +507,23 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				$work_hourup = array_merge($work_array1,$work_array2,$work_array3);
 				?>
 				<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><?php echo AddPlayTime($work_hourup); ?></td><td></td><td></td><td></td></tr>
-				 <tr><td colspan=8><a href="<?php echo esc_url( $upload_dir_url."/".$file_name ) ?>" class='btn btn-danger custom_download'><i class='fas fa-download' aria-hidden='true'></i><?php esc_html_e('Download Report', CIP_FREE_TXTDM );?></a></td><td></td><td></td><td></td></tr>
+				 <tr><td colspan=8><a href="<?php echo esc_url( $upload_dir_url."/".$file_name ) ?>" class='btn btn-danger custom_download'><i class='fas fa-download' aria-hidden='true'></i><?php esc_html_e(' Descargar Informe', CIP_FREE_TXTDM );?></a></td><td></td><td></td><td></td></tr>
 				<?php }	?>
 			</tbody>
 			<thead>
 				<tr class="info main_tb_head">
 					<th>#</th>
-					<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Break Time', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Tiempo de descanso', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
 					<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Report', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Ubicación', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Informes', CIP_FREE_TXTDM );?></th>
 				<tr>
 			<thead>
 		</table>
@@ -507,46 +571,46 @@ if(isset($_POST['id']) && isset($_POST['staff_id']) && isset($_POST['date'])) {
 		$dteDiff  = $dteStart->diff($dteEnd);
 		$break_hour = $dteDiff->format("%H:%I:%S");
 		?>
-		<div id="view-report-result">
+		<div id="view-report-result" >
 			<table class="table table-bordered">
 				<tr>
-					<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( ucwords($fname." ".$lname)); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $date); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $office_in); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $office_out); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $lunch_in); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $lunch_out); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('break Time', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Tiempo de descanso', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $break_hour); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Working Hours', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $work_hour); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('IP Address', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
 					<td><?php  esc_html_e( $user_ip); ?></td>
 				<tr>
 				<tr>
-					<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
+					<th><?php esc_html_e('Ubicación', CIP_FREE_TXTDM );?></th>
 					<td><?php if($office_in != "None") { echo esc_attr( $report_data->user_location); } else { esc_html_e( "None"); } ?></td>
 				<tr>
 				<tr>
@@ -567,7 +631,7 @@ if(isset($_POST['id']) && isset($_POST['staff_id']) && isset($_POST['date'])) {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('View Report', CIP_FREE_TXTDM );?></h4>
+				<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Ver detalles', CIP_FREE_TXTDM );?></h4>
 			</div>
 			<div class="modal-body">
 			</div>
