@@ -13,7 +13,7 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 ?>
 <nav class="navbar navbar-dark bg-dark main-dashboard-cip other-pages">
 	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=clock-in-portal' ) ); ?>"><i class="fas fa-home"></i></a>
-  	<a class="navbar-brand" href="#"><?php esc_html_e('Staffs Management', CIP_FREE_TXTDM ); ?></a>
+  	<a class="navbar-brand" href="#"><?php esc_html_e('Administrar Empleados', CIP_FREE_TXTDM ); ?></a>
   	<div class="form-inline my-2 my-lg-0">
   		<button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#add-existing-staff-modal"><i class="fas fa-user" aria-hidden="true"></i>&nbsp;<?php esc_html_e('Add Staff', CIP_FREE_TXTDM );?></button>&nbsp;&nbsp;
       	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=cip-settings' ) ); ?>"><i class="fas fa-cog"></i></a>
@@ -23,8 +23,8 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 <div class="other-page-content">
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li class="nav-item" role="presentation" class="active sm-labels"><a class="nav-link active" href="#active-staff" aria-controls="home" role="tab" data-toggle="tab"><?php esc_html_e('ACTIVE STAFF', CIP_FREE_TXTDM );?></a></li>
-		<li class="nav-item" role="presentation" class="sm-labels"><a class="nav-link" href="#in-active-staff" aria-controls="in-active-staff" role="tab" data-toggle="tab"><?php esc_html_e('INACTIVE STAFF', CIP_FREE_TXTDM );?></a></li>
+		<li class="nav-item" role="presentation" class="active sm-labels"><a class="nav-link active" href="#active-staff" aria-controls="home" role="tab" data-toggle="tab"><?php esc_html_e('Personal Activo', CIP_FREE_TXTDM );?></a></li>
+		<li class="nav-item" role="presentation" class="sm-labels"><a class="nav-link" href="#in-active-staff" aria-controls="in-active-staff" role="tab" data-toggle="tab"><?php esc_html_e('Personal Inactivo', CIP_FREE_TXTDM );?></a></li>
 	</ul>
 	<!-- Tabs -->
 	<div class="tab-content">
@@ -34,10 +34,9 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 				<thead>
 					<tr class="info main_tb_head">
 						<th><?php esc_html_e('#', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Role', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Cargo', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Acción', CIP_FREE_TXTDM );?></th>
 					</tr>
 				</thead>
 				<?php if ( ! empty ( $all_active_staffs ) ) { ?>
@@ -71,7 +70,6 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 						<td><?php esc_html_e( $no); ?>.</td> <?php // If staff_id not existor 0 then data-table show as null data ?>
 						<td><?php esc_html_e( ucwords($fname." ".$lname)." ($email)"); ?></td>
 						<td><?php esc_html_e( ucwords($designation)); ?></td>
-						<td><?php esc_html_e( ucwords($role)); ?></td>
 						<td>
 							<a href="#" class="btn btn-info" title="View" data-toggle="modal" data-target="#view-staff-modal" onclick="return DoAction('view', '<?php esc_html_e($staff_id); ?>');"><i class="fas fa-eye" aria-hidden="true"></i></a>
 							<a href="#" class="btn btn-success" title="Update" data-toggle="modal" data-target="#update-staff-modal" onclick="return DoAction('update', '<?php esc_html_e($staff_id); ?>');"><i class="fas fa-edit" aria-hidden="true"></i></a>
@@ -84,15 +82,14 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 					?>
 				</tbody>
 				<?php } else {	echo "<tbody><tr><td colspan='6'>No Staff Found.</td></tr></tbody>"; }	?>				
-				<thead>
-					<tr class="info main_tb_head">
-						<th>#</th>
-						<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Role', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
-					</tr>
-				</thead>
+<!--				<thead>-->
+<!--					<tr class="info main_tb_head">-->
+<!--						<th>#</th>-->
+<!--						<th>--><?php //esc_html_e('Name', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Designation', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Action', CIP_FREE_TXTDM );?><!--</th>-->
+<!--					</tr>-->
+<!--				</thead>-->
 			</table>
 		</div>
 		<!--active staffs end--->
@@ -243,7 +240,7 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="add-existing-staff-button" name="add-existing-staff-button" class="btn btn-primary" onclick="return DoAction('add-existing', '');"><?php esc_html_e('Add Staff', CIP_FREE_TXTDM );?></button>
-						<button type="button" id="add-existing-staff-close" name="add-existing-staff-close" class="btn btn-success" data-dismiss="modal"><?php esc_html_e('Close', CIP_FREE_TXTDM );?></button>
+						<button type="button" id="add-existing-staff-close" name="add-existing-staff-close" class="btn btn-success" data-dismiss="modal"><?php esc_html_e('Cerrar', CIP_FREE_TXTDM );?></button>
 						<button type="button" style="float:left" id="add-New-staff" name="add-New-staff" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='<?php echo admin_url( 'user-new.php');?>'"><?php esc_html_e('Registered New Staff', CIP_FREE_TXTDM );?></button>
 						<div id="add-existing-loading-icon" name="add-existing-loading-icon" style="display:none;">
 							<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
@@ -261,7 +258,7 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 		<div class="modal-content">
 			<form id="view-staff-form" name="view-staff-form">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Staff Details', CIP_FREE_TXTDM );?></h4>
+					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Información del empleado', CIP_FREE_TXTDM );?></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					
 				</div>
@@ -271,7 +268,7 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal"><?php esc_html_e('Close', CIP_FREE_TXTDM );?></button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"><?php esc_html_e('Cerrar', CIP_FREE_TXTDM );?></button>
 				</div>
 			</form>
 		</div>
@@ -284,7 +281,7 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 		<div class="modal-content">
 			<form id="update-staff-form" name="update-staff-form">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Update Staff Details', CIP_FREE_TXTDM );?></h4>
+					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Actualizar Información', CIP_FREE_TXTDM );?></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					
 				</div>
@@ -294,8 +291,8 @@ $all_inactive_staffs = $wpdb->get_results($wpdb->prepare("SELECT * FROM `$staff_
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="update-staff-button" name="update-staff-button" class="btn btn-success" onclick="return DoAction('update-now', '');">Update Staff</button>
-					<button type="button" id="update-staff-close" name="update-staff-close" class="btn btn-danger" data-dismiss="modal">Close</button>
+					<button type="button" id="update-staff-button" name="update-staff-button" class="btn btn-success" onclick="return DoAction('update-now', '');">Actualizar</button>
+					<button type="button" id="update-staff-close" name="update-staff-close" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					<div id="update-now-loading-icon" style="display:none;">
 						<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
 					</div>
@@ -483,7 +480,7 @@ function DoAction(action, id){
 	
 	//delete
 	if(action == "delete") {
-		if (confirm("Are you sure want to delete this staff?") == true) {
+		if (confirm("¿Seguro que quieres borra al empleado?") == true) {
 			var data_values = "&action=" + action + "&id=" + id;
 			//post data
 			jQuery.ajax({
@@ -565,15 +562,15 @@ if(isset($_POST['action'])){
 						<td><?php esc_html_e( ucwords($role)); ?></td>					
 					</tr>
 					<tr>
-						<td><label for="Role"><?php esc_html_e('Username', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Role"><?php esc_html_e('Nombre de usuario', CIP_FREE_TXTDM );?></label></td>
 						<td><?php esc_html_e( $username); ?></td>					
 					</tr>
 					<tr>
-						<td><label for="Role"><?php esc_html_e('First Name', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Role"><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></label></td>
 						<td><?php esc_html_e( ucwords($fname)); ?></td>					
 					</tr>
 					<tr>
-						<td><label for="Role"><?php esc_html_e('Last Name', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Role"><?php esc_html_e('Apellidos', CIP_FREE_TXTDM );?></label></td>
 						<td><?php esc_html_e( ucwords($lname)); ?></td>					
 					</tr>
 					<tr>
@@ -581,7 +578,7 @@ if(isset($_POST['action'])){
 						<td><?php esc_html_e( $email); ?></td>					
 					</tr>
 					<tr>
-						<td><label for="Designation"><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Designation"><?php esc_html_e('Cargo', CIP_FREE_TXTDM );?></label></td>
 						<td><?php esc_html_e( ucwords($designation)); ?></td>					
 					</tr>
 					<tr>
@@ -592,7 +589,7 @@ if(isset($_POST['action'])){
 			</div>
 			<?php			
 		} else {
-			echo "<div id='view-action-result'>Error: Unable to fetch data.</div>";
+			echo "<div id='view-action-result'>Ha sucedido un error</div>";
 		}
 	} // end view
 	
@@ -631,11 +628,11 @@ if(isset($_POST['action'])){
 						</td>
 					</tr>
 					<tr>
-						<td><label for="First Name"><?php esc_html_e('First Name', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="First Name"><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></label></td>
 						<td><input type="input" class="form-control" id="fname" name="fname" placeholder="Type First Name" value="<?php echo esc_attr($fname); ?>" readonly></td>
 					</tr>
 					<tr>
-						<td><label for="Last Name"><?php esc_html_e('Last Name', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Last Name"><?php esc_html_e('Apellidos', CIP_FREE_TXTDM );?></label></td>
 						<td><input type="input" class="form-control" id="lname" name="lname" placeholder="Type Last Name" value="<?php echo esc_attr($lname); ?>" readonly></td>
 					</tr>
 					<tr>
@@ -643,7 +640,7 @@ if(isset($_POST['action'])){
 						<td><input type="input" class="form-control" id="email" name="email" placeholder="Type Email" value="<?php echo esc_attr($email); ?>" readonly></td>
 					</tr>
 					<tr>
-						<td><label for="Designation"><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></label></td>
+						<td><label for="Designation"><?php esc_html_e('Cargo', CIP_FREE_TXTDM );?></label></td>
 						<td>
 							<select id="designation" name="designation" class="form-control">
 								<optgroup label="Select Any Designation">

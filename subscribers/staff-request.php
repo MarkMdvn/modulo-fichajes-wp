@@ -1,7 +1,73 @@
 <?php
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<h1><?php esc_html_e('Leave Request', CIP_FREE_TXTDM );?></h1>
+
+
+<style>
+    #wpbody {
+        padding-top: 0px !important;
+    }
+    .custom-nav-bar {
+        background: #fff !important;
+        padding: 10px 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        margin: 10px auto !important;
+    }
+    .custom-nav-bar .nav-left img {
+        width: 100px !important;
+    }
+    .custom-nav-bar .nav-right {
+        display: flex !important;
+        align-items: center !important;
+    }
+    .custom-nav-bar .nav-right a {
+        color: black !important;
+        text-decoration: none !important;
+        margin-left: 15px !important;
+        font-weight: 500 !important;
+        transition: color 0.3s ease !important;
+        font-size: 1.5rem !important;
+    }
+    .custom-nav-bar .nav-right a:hover {
+        color: #000 !important;
+    }
+    /* Mobile adjustments to maintain a single row layout */
+    @media (max-width: 600px) {
+        .custom-nav-bar {
+            flex-direction: row !important;
+            justify-content: space-between !important;
+        }
+        .custom-nav-bar .nav-right a {
+            margin-left: 10px !important;
+        }
+    }
+</style>
+
+<div class="custom-nav-bar">
+    <div class="nav-left">
+        <!-- Replace with your logo URL -->
+        <img href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance" src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
+    </div>
+    <div class="nav-right">
+        <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">
+            <i class="fas fa-tachometer-alt"></i>
+        </a>
+        <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-reports">
+            <i class="fas fa-history"></i>
+        </a>
+        <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-holidays">
+            <i class="fas fa-umbrella-beach"></i>
+        </a>
+        <!-- Account Icon -->
+        <a href="https://control.carniceriademadrid.es/account/">
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+</div>
+<h1><?php esc_html_e('Dejar petición', CIP_FREE_TXTDM );?></h1>
 <?php 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

@@ -98,13 +98,13 @@ function cip_plugin_menu_free() {
     }
 
     $cip_menu1 = add_menu_page(CIP_PLUGIN_NAME, __(CIP_PLUGIN_NAME, CIP_FREE_TXTDM), 'administrator', 'clock-in-portal', 'cip_dashboard_free', 'dashicons-clock', 65);
-    $cip_menu2 = add_submenu_page('clock-in-portal', 'Reports', __('Reports', CIP_FREE_TXTDM), 'administrator', 'cip-reports', 'cip_reports_free');
-    $cip_menu3 = add_submenu_page('clock-in-portal', 'Staffs', __('Staff', CIP_FREE_TXTDM), 'administrator', 'cip-staffs', 'cip_staffs_free');
-    $cip_menu4 = add_submenu_page('clock-in-portal', 'Designations', __('Designations', CIP_FREE_TXTDM), 'administrator', 'cip-designations', 'cip_designations_free');
-    $cip_menu5 = add_submenu_page('clock-in-portal', 'Holidays', __('Holidays', CIP_FREE_TXTDM), 'administrator', 'cip-holidays', 'cip_holidays_free');
+    $cip_menu2 = add_submenu_page('clock-in-portal', 'Reports', __('Informes', CIP_FREE_TXTDM), 'administrator', 'cip-reports', 'cip_reports_free');
+    $cip_menu3 = add_submenu_page('clock-in-portal', 'Staffs', __('Empleados', CIP_FREE_TXTDM), 'administrator', 'cip-staffs', 'cip_staffs_free');
+    $cip_menu4 = add_submenu_page('clock-in-portal', 'Designations', __('Grupos', CIP_FREE_TXTDM), 'administrator', 'cip-designations', 'cip_designations_free');
+    $cip_menu5 = add_submenu_page('clock-in-portal', 'Holidays', __('Vacaciones', CIP_FREE_TXTDM), 'administrator', 'cip-holidays', 'cip_holidays_free');
     $cip_menu6 = add_submenu_page('clock-in-portal', $LeaveRequest, __($LeaveRequest, CIP_FREE_TXTDM), 'administrator', 'cip-staff-request', 'cip_staff_request_free');
-    $cip_menu7 = add_submenu_page('clock-in-portal', 'Settings', __('Settings', CIP_FREE_TXTDM), 'administrator', 'cip-settings', 'cip_settings_free');
-    $cip_menu8 = add_submenu_page('clock-in-portal', 'How to Work', __('How to Work', CIP_FREE_TXTDM), 'administrator', 'cip-help', 'cip_help_free');
+    $cip_menu7 = add_submenu_page('clock-in-portal', 'Settings', __('Ajustes', CIP_FREE_TXTDM), 'administrator', 'cip-settings', 'cip_settings_free');
+//    $cip_menu8 = add_submenu_page('clock-in-portal', 'How to Work', __('Guía', CIP_FREE_TXTDM), 'administrator', 'cip-help', 'cip_help_free');
 	
 
 

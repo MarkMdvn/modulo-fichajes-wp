@@ -8,9 +8,9 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 ?>
 <nav class="navbar navbar-dark bg-dark main-dashboard-cip other-pages">
 	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=clock-in-portal' ) ); ?>"><i class="fas fa-home"></i></a>
-  	<a class="navbar-brand" href="#"><?php esc_html_e('Designation Management', CIP_FREE_TXTDM ); ?></a>
+  	<a class="navbar-brand" href="#"><?php esc_html_e('Administración de Grupos', CIP_FREE_TXTDM ); ?></a>
   	<div class="form-inline my-2 my-lg-0">
-  		<button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#add-designation-modal"><i class="fas fa-thumbtack" aria-hidden="true"></i>&nbsp;<?php esc_html_e(' Add Staff Designation', CIP_FREE_TXTDM );?></button>&nbsp;&nbsp;
+  		<button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#add-designation-modal"><i class="fas fa-thumbtack" aria-hidden="true"></i>&nbsp;<?php esc_html_e(' Añadir un Grupo', CIP_FREE_TXTDM );?></button>&nbsp;&nbsp;
       	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=cip-settings' ) ); ?>"><i class="fas fa-cog"></i></a>
     </div>
 </nav>
@@ -20,10 +20,10 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 		<thead>
 			<tr class="info main_tb_head">
 				<th>#</th>
-				<th><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Grupo', CIP_FREE_TXTDM );?></th>
 				<th><?php esc_html_e('Color', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Acción', CIP_FREE_TXTDM );?></th>
 			<tr>
 		<thead>
 		<tbody>
@@ -35,7 +35,7 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 						$id = ucwords($staff_category->id);
 						$name = ucwords($staff_category->name);
 						$color = strtoupper($staff_category->color);
-						if($staff_category->status) $status = "Available"; else $status = "Unavailable";
+						if($staff_category->status) $status = "Activo"; else $status = "Inactivo";
 			?>
 			<tr>
 				<td><?php esc_html_e( $no); ?>.</td>
@@ -54,19 +54,19 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 					$no++;
 					}// end foreach
 				} else {
-					echo "<tr><td colspan=5 class='text-center'>No Record Found.</td></tr>";
+					echo "<tr><td colspan=5 class='text-center'>No hay nada por aquí...</td></tr>";
 				}
 			?>
 		</tbody>
-		<thead>
-			<tr class="info main_tb_head">
-				<th>#</th>
-				<th><?php esc_html_e('Designation', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Color', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
-			<tr>
-		<thead>
+<!--		<thead>-->
+<!--			<tr class="info main_tb_head">-->
+<!--				<th>#</th>-->
+<!--				<th>--><?php //esc_html_e('Designation', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Color', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Status', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Action', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<tr>-->
+<!--		<thead>-->
 	</table>	
 </div>
 
@@ -77,26 +77,26 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 		<div class="modal-content">
 			<form id="add-designation-form" name="add-designation-form">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Add New Staff Designation', CIP_FREE_TXTDM );?></h4>
+					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Crear un grupo para los empleados', CIP_FREE_TXTDM );?></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="Password"><?php esc_html_e('Designation Name', CIP_FREE_TXTDM );?></label>
-						<input type="input" class="form-control" id="name" name="name" placeholder="Type Designation">
+						<label for="Password"><?php esc_html_e('Nombre del Grupo', CIP_FREE_TXTDM );?></label>
+						<input type="input" class="form-control" id="name" name="name" >
 						<?php wp_nonce_field( 'add_designation_nonce_action', 'add_designation_nonce_name' ); ?>
 					</div>
 					<div class="form-group">
-						<label for="Color"><?php esc_html_e('Designation Color', CIP_FREE_TXTDM );?></label>
+						<label for="Color"><?php esc_html_e('Color del Grupo', CIP_FREE_TXTDM );?></label>
 						<input type="color" class="form-control" id="color" name="color" value="#EE2724">
 					</div>
 					<div class="form-group">
-						<label for="Status"><?php esc_html_e('Designation Status', CIP_FREE_TXTDM );?></label>
+						<label for="Status"><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></label>
 						<select id="status" name="status" class="form-control">
 							<optgroup label="Select Any Status">
-								<option value="1"><?php esc_html_e('Available', CIP_FREE_TXTDM );?></option>
-								<option value="0"><?php esc_html_e('Unavailable', CIP_FREE_TXTDM );?></option>
+								<option value="1"><?php esc_html_e('Activo', CIP_FREE_TXTDM );?></option>
+								<option value="0"><?php esc_html_e('Inactivo', CIP_FREE_TXTDM );?></option>
 							</optgroup>
 						</select>
 					</div>					
@@ -105,8 +105,8 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 					<div id="add-loading-icon" style="display:none;">
 						<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
 					</div>
-					<button id="add-designation" name="add-designation" type="button" class="btn btn-success" onclick="return DoAction('add', '');"><?php esc_html_e('Add Designation', CIP_FREE_TXTDM );?></button>
-					<button id="add-close" name="add-close" type="button" class="btn btn-danger" data-dismiss="modal"><?php esc_html_e('Close', CIP_FREE_TXTDM );?></button>
+					<button id="add-designation" name="add-designation" type="button" class="btn btn-success" onclick="return DoAction('add', '');"><?php esc_html_e('Crear', CIP_FREE_TXTDM );?></button>
+					<button id="add-close" name="add-close" type="button" class="btn btn-danger" data-dismiss="modal"><?php esc_html_e('Cerrar', CIP_FREE_TXTDM );?></button>
 				</div>
 			</form>
 		</div>
@@ -140,7 +140,7 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 		<div class="modal-content">
 			<form id="update-designation-form" name="update-designation-form">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Update Staff Designation', CIP_FREE_TXTDM );?></h4>
+					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Editar Grupo', CIP_FREE_TXTDM );?></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 				<div class="modal-body" id="update-modal-body">
@@ -149,8 +149,8 @@ $staff_category_table = $wpdb->prefix . "sm_staff_category";
 					<div id="update-loading-icon" style="display:none;">
 						<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
 					</div>
-					<button id="update-designation" name="update-designation" type="button" class="btn btn-primary" onclick="return DoAction('update-now', '');"><?php esc_html_e('Update Designation', CIP_FREE_TXTDM );?></button>
-					<button id="update-close" name="update-close" type="button" class="btn btn-default" data-dismiss="modal"><?php esc_html_e('Close', CIP_FREE_TXTDM );?></button>
+					<button id="update-designation" name="update-designation" type="button" class="btn btn-primary" onclick="return DoAction('update-now', '');"><?php esc_html_e('Actualizar', CIP_FREE_TXTDM );?></button>
+					<button id="update-close" name="update-close" type="button" class="btn btn-default" data-dismiss="modal"><?php esc_html_e('Cerrar', CIP_FREE_TXTDM );?></button>
 				</div>
 			</form>
 		</div>
@@ -334,11 +334,11 @@ if((isset($_POST['action']))) {
 			$name = $designation->name;
 			$color = $designation->color;
 			$status = $designation->status;
-			if($status) $status = "Available"; else $status = "Unavailable";
+			if($status) $status = "Activo"; else $status = "Inactivo";
 			echo "<div id='view-action-result'>
 			<table class='table'>
 				<tr>
-					<td><label>Designation</label></td>
+					<td><label>Grupo</label></td>
 					<td>$name</td>
 				</tr>
 				<tr>
@@ -346,7 +346,7 @@ if((isset($_POST['action']))) {
 					<td><span style='background-color: $color; opacity: 0.7; padding: 4px;'>$color</span></td>
 				</tr>
 				<tr>
-					<td><label>Staus</label></td>
+					<td><label>Estado</label></td>
 					<td>$status</td>
 				</tr>
 			</table>

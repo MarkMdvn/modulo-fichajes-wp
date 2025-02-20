@@ -36,11 +36,11 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 	array_push( $saved_holidays, $new_holiday );
 	if ( update_option("cip_official_holidays" , $saved_holidays ) ) {
 		echo "<div class='alert alert-success'>
-			  <strong>Success!</strong>Holiday Added Successfully.
+			  <strong>Éxito!</strong>
 			</div>";
 	} else {
 		echo "<div class='alert alert-danger'>
-			  <strong>Failed!</strong> Holiday Not Added Successfully.
+			  <strong>Failed!</strong> 
 			</div>";
 	}
 
@@ -48,9 +48,9 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 ?>
 <nav class="navbar navbar-dark bg-dark main-dashboard-cip other-pages">
 	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=clock-in-portal' ) ); ?>"><i class="fas fa-home"></i></a>
-  	<a class="navbar-brand" href="#"><?php esc_html_e('Holidays Management', CIP_FREE_TXTDM ); ?></a>
+  	<a class="navbar-brand" href="#"><?php esc_html_e('Administración de Vacaciones', CIP_FREE_TXTDM ); ?></a>
   	<div class="form-inline my-2 my-lg-0">
-  		<button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#add-holiday-modal"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;<?php esc_html_e(' Add Holiday', CIP_FREE_TXTDM );?></button>&nbsp;&nbsp;
+  		<button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#add-holiday-modal"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;<?php esc_html_e(' Añadir Vacaciones', CIP_FREE_TXTDM );?></button>&nbsp;&nbsp;
       	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=cip-settings' ) ); ?>"><i class="fas fa-cog"></i></a>
     </div>
 </nav>
@@ -58,7 +58,7 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 <div class="other-page-content">
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li class="nav-item" role="presentation" class="active sm-labels nav-item"><a class="nav-link active" href="#official-holiday" aria-controls="official-holiday" role="tab" data-toggle="tab"><?php esc_html_e('Official Holidays', CIP_FREE_TXTDM );?></a></li>
+		<li class="nav-item" role="presentation" class="active sm-labels nav-item"><a class="nav-link active" href="#official-holiday" aria-controls="official-holiday" role="tab" data-toggle="tab"><?php esc_html_e('Vacaciones', CIP_FREE_TXTDM );?></a></li>
 	</ul>
 
 	<!-- Tabs -->
@@ -70,11 +70,11 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 				<thead>
 					<tr class="info main_tb_head">
 						<th><?php esc_html_e('#', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Holiday Name', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Day(s)', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Día/s', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></th>
+						<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
 					</tr>
 				</thead>
 				<?php if($holidays = get_option("cip_official_holidays")) { ?>
@@ -127,18 +127,18 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 						} } } ?>
 				</tbody>
 				<?php } else {
-						echo "<tbody><tr><td colspan='6'>No Staff Found.</td></tr></tbody>";
+						echo "<tbody><tr><td colspan='6'>No existen empleados.</td></tr></tbody>";
 					} ?>		
-				<thead>
-					<tr class="info main_tb_head">
-						<th>#</th>
-						<th><?php esc_html_e('Holiday Name', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Day(s)', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
-						<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-					</tr>
-				</thead>
+<!--				<thead>-->
+<!--					<tr class="info main_tb_head">-->
+<!--						<th>#</th>-->
+<!--						<th>--><?php //esc_html_e('Nombre', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Fecha', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Día/s', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Estado', CIP_FREE_TXTDM );?><!--</th>-->
+<!--						<th>--><?php //esc_html_e('Fecha', CIP_FREE_TXTDM );?><!--</th>-->
+<!--					</tr>-->
+<!--				</thead>-->
 			</table>
 		</div>
 		<!--official-holiday end--->
@@ -158,38 +158,38 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 		<div class="modal-content">
 			<form id="add-holiday-form" name="add-holiday-form" method="post" action="">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Add New Holiday', CIP_FREE_TXTDM );?></h4>
+					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e('Crear Vacaciones', CIP_FREE_TXTDM );?></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="name"><?php esc_html_e('Holiday Name', CIP_FREE_TXTDM );?></label>
+						<label for="name"><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></label>
 						<input type="input" class="form-control" id="name" name="name" placeholder="Type Holiday Name" required>
 						<?php wp_nonce_field( 'add_holiday_nonce_action', 'add_holiday_nonce_name' ); ?>
 					</div>
 					<div class="form-group">
-						<label for="start_date"><?php esc_html_e('Start Date', CIP_FREE_TXTDM );?></label>
-						<input type="input" class="form-control sdate" id="start_date" name="start_date" placeholder="Start Date (Use Format YYYY-MM-DD)" required>
+						<label for="start_date"><?php esc_html_e('Comienzo', CIP_FREE_TXTDM );?></label>
+						<input type="input" class="form-control sdate" id="start_date" name="start_date" placeholder="(Formato YYYY-MM-DD)" required>
 					</div>
 					
 					<div class="form-group">
-						<label for="end_date"><?php esc_html_e('End Date', CIP_FREE_TXTDM );?></label>
-						<input type="input" class="form-control edate" id="end_date" name="end_date" placeholder="End Date (Use Format YYYY-MM-DD)" required>
+						<label for="end_date"><?php esc_html_e('Finalización', CIP_FREE_TXTDM );?></label>
+						<input type="input" class="form-control edate" id="end_date" name="end_date" placeholder="(Formato YYYY-MM-DD)" required>
 					</div>
 					<div class="form-group">
-						<label for="status"><?php esc_html_e('Status', CIP_FREE_TXTDM );?></label>
+						<label for="status"><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></label>
 						<select id="status" name="status" class="form-control">
 							<optgroup label="Select Any Status">
-								<option value="1"><?php esc_html_e('Enable', CIP_FREE_TXTDM );?></option>
-								<option value="2"><?php esc_html_e('Disable', CIP_FREE_TXTDM );?></option>
+								<option value="1"><?php esc_html_e('Activo', CIP_FREE_TXTDM );?></option>
+								<option value="2"><?php esc_html_e('Inactivo', CIP_FREE_TXTDM );?></option>
 							</optgroup>
 						</select>
 					</div>					
 				</div>
 				<div class="modal-footer">
-					<input type="submit" id="add-holiday-button" name="add-holiday-button" class="btn btn-success" value="Add Holiday">
-					<button type="button" id="add-holiday-close" name="add-holiday-close" class="btn btn-danger" data-dismiss="modal">Close</button>
+					<input type="submit" id="add-holiday-button" name="add-holiday-button" class="btn btn-success" value="Añadir">
+					<button type="button" id="add-holiday-close" name="add-holiday-close" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					<div id="add-loading-icon" style="display:none;">
 						<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
 					</div>

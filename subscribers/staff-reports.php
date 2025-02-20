@@ -222,7 +222,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
         <div class="custom-nav-bar">
             <div class="nav-left">
                 <!-- Replace with your logo URL -->
-                <img src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
+                <img href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance" src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
             </div>
             <div class="nav-right">
                 <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">
@@ -234,8 +234,9 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
                 <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-holidays">
                     <i class="fas fa-umbrella-beach"></i>
                 </a>
-                <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-request">
-                    <i class="fas fa-sticky-note"></i>
+                <!-- Account Icon -->
+                <a href="https://control.carniceriademadrid.es/account/">
+                    <i class="fas fa-user"></i>
                 </a>
             </div>
         </div>
@@ -286,7 +287,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 							<option value="17" <?php if($filter_name == "17") esc_html_e( "selected=selected" ); ?>><?php esc_html_e('Último año', CIP_FREE_TXTDM );?></option>
 						</optgroup>
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="submit" class="btn btn-info get_report_btn"><?php esc_html_e('Obtener Informe', CIP_FREE_TXTDM );?></button>
+					<button type="submit" class="btn btn-info mt-2"><?php esc_html_e('Obtener Informe', CIP_FREE_TXTDM );?></button>
 				</td>
 				<td>
 
@@ -446,7 +447,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 					<td><?php esc_html_e( $user_ip); ?></td>
 					<td><?php if(isset($row->user_location)){ esc_html_e( $row->user_location); } ?></td>
 					<td><?php if($office_in != "None") { ?>
-						<button id="view-report" name="view-report" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($date); ?>');"><?php esc_html_e('Ver Informe', CIP_FREE_TXTDM );?></button></td>
+						<button id="view-report" name="view-report" class="btn btn-default" data-toggle="modal" data-backdrop="false" data-target="#myModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($date); ?>');"><?php esc_html_e('Ver Informe', CIP_FREE_TXTDM );?></button></td>
 						<?php } else { esc_html_e( 'No report'); } ?>
 				</tr>
 				<?php
@@ -507,32 +508,17 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				$work_hourup = array_merge($work_array1,$work_array2,$work_array3);
 				?>
 				<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><?php echo AddPlayTime($work_hourup); ?></td><td></td><td></td><td></td></tr>
-				 <tr><td colspan=8><a href="<?php echo esc_url( $upload_dir_url."/".$file_name ) ?>" class='btn btn-danger custom_download'><i class='fas fa-download' aria-hidden='true'></i><?php esc_html_e(' Descargar Informe', CIP_FREE_TXTDM );?></a></td><td></td><td></td><td></td></tr>
+				 <tr><td colspan=8><a href="<?php echo esc_url( $upload_dir_url."/".$file_name ) ?>" class='btn btn-success '><i class='fas fa-download' aria-hidden='true'></i><?php esc_html_e(' Descargar Informe', CIP_FREE_TXTDM );?></a></td><td></td><td></td><td></td></tr>
 				<?php }	?>
 			</tbody>
-			<thead>
-				<tr class="info main_tb_head">
-					<th>#</th>
-					<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Tiempo de descanso', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Ubicación', CIP_FREE_TXTDM );?></th>
-					<th><?php esc_html_e('Informes', CIP_FREE_TXTDM );?></th>
-				<tr>
-			<thead>
+
 		</table>
 		<?php
 	} elseif($status == 2 || $Status == 3) { ?>
 		<p class='alert alert-danger'><?php esc_html_e('Sorry! Your account is not activated. Please contact to your higher authority regarding your Inactive account.', CIP_FREE_TXTDM );?></p>
 <?php	}
 } else { ?>
-	<?php esc_html_e('Sorry! this page is only available for Registered Staffs', CIP_FREE_TXTDM );?>
+	<?php esc_html_e('Lo sentimos, no tienes suficientes permisos para acceder a esta página', CIP_FREE_TXTDM );?>
 <?php }
 // fetch report
 if(isset($_POST['id']) && isset($_POST['staff_id']) && isset($_POST['date'])) {

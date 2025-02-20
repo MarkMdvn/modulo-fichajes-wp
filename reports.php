@@ -60,7 +60,7 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 
 <nav class="navbar navbar-dark bg-dark main-dashboard-cip other-pages">
 	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=clock-in-portal' ) ); ?>"><i class="fas fa-home"></i></a>
-  	<a class="navbar-brand" href="#"><?php esc_html_e('Mange Reports', CIP_FREE_TXTDM ); ?></a>
+  	<a class="navbar-brand" href="#"><?php esc_html_e('Administrar Informes', CIP_FREE_TXTDM ); ?></a>
   	<div class="form-inline my-2 my-lg-0">
       	<a class="navbar-brand" href="<?php echo esc_url( admin_url( 'admin.php?page=cip-settings' ) ); ?>"><i class="fas fa-cog"></i></a>
     </div>
@@ -73,9 +73,9 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 	<tr>
 		<td class="sm-labels">
 			<!-- staffs -->
-			<?php esc_html_e('Staff(s)', CIP_FREE_TXTDM );?>
+			<?php esc_html_e('Empleado/s', CIP_FREE_TXTDM );?>
 			<select id="staff_id" name="staff_id">
-				<optgroup label="Select Staff">
+				<optgroup label="Selecciona un empleado">
 				<?php
 				if (! empty ( $all_staffs = $wpdb->get_results( $wpdb->prepare("SELECT * FROM `$staff_table` WHERE `status` = %d", 1) ) ) ) {
 					foreach( $all_staffs as $staff_data ) {
@@ -91,12 +91,12 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 						<?php
 					} }
 				} else { ?>
-				<option readonly><?php esc_html_e('No Staff Available', CIP_FREE_TXTDM );?></option>
+				<option readonly><?php esc_html_e('No hay empleados', CIP_FREE_TXTDM );?></option>
 				<?php 
 				} ?>
 				</optgroup>
 			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<?php esc_html_e('Filter', CIP_FREE_TXTDM );?>
+			<?php esc_html_e('Filtro', CIP_FREE_TXTDM );?>
 			<!-- filter -->
 			<?php 
 				/* New code for Month filter */
@@ -115,7 +115,7 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 				$previous_mnth_11  = date( "F Y", strtotime( "-12 month" ) );
 			 ?>
 			<select id="filter_name" name="filter_name">
-				<optgroup label="Select Any Filter ( individual Months )">
+				<optgroup label="Selecciona un mes">
 					<option value="1" <?php if($filter_name == "1") echo esc_attr("selected=selected"); ?>><?php esc_html_e( $current_mnth, CIP_FREE_TXTDM );?></option>
 					<option value="2" <?php if($filter_name == "2") echo esc_attr("selected=selected"); ?>><?php esc_html_e( $previous_mnth, CIP_FREE_TXTDM );?></option>
 					<option value="3" <?php if($filter_name == "3") echo esc_attr("selected=selected"); ?>><?php esc_html_e( $previous_mnth_1, CIP_FREE_TXTDM );?></option>
@@ -130,21 +130,21 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 					<option value="12" <?php if($filter_name == "12") echo esc_attr("selected=selected"); ?>><?php esc_html_e( $previous_mnth_10, CIP_FREE_TXTDM );?></option>
 					<option value="13" <?php if($filter_name == "13") echo esc_attr("selected=selected"); ?>><?php esc_html_e( $previous_mnth_11, CIP_FREE_TXTDM );?></option>
 				</optgroup>
-				<optgroup label="Select Any Filter ( Combine Months )">
-					<option value="14" <?php if($filter_name == "14") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Previous Three Month', CIP_FREE_TXTDM );?></option>
-					<option value="15" <?php if($filter_name == "15") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Previous Six Month', CIP_FREE_TXTDM );?></option>
-					<option value="16" <?php if($filter_name == "16") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Previous Nine Month', CIP_FREE_TXTDM );?></option>
-					<option value="17" <?php if($filter_name == "17") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Previous One Year', CIP_FREE_TXTDM );?></option>
+				<optgroup label="Selecciona un filtro">
+					<option value="14" <?php if($filter_name == "14") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Últimos 3 meses', CIP_FREE_TXTDM );?></option>
+					<option value="15" <?php if($filter_name == "15") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Últimos 6 meses', CIP_FREE_TXTDM );?></option>
+					<option value="16" <?php if($filter_name == "16") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Últimos 9 meses', CIP_FREE_TXTDM );?></option>
+					<option value="17" <?php if($filter_name == "17") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Último año', CIP_FREE_TXTDM );?></option>
 				</optgroup>
 			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<select id="attend_filter_name" name="attend_filter_name">
-				<optgroup label="Select Any Filter">
-				<option value="1" <?php if($attend_filter_name == "1") echo esc_attr("selected=selected"); ?>><?php esc_html_e('All Days', CIP_FREE_TXTDM );?></option>
-				<option value="2" <?php if($attend_filter_name == "2") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Only Attend days', CIP_FREE_TXTDM );?></option>
-				<option value="3" <?php if($attend_filter_name == "3") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Only Absent Days', CIP_FREE_TXTDM );?></option>
+				<optgroup label="Selecciona un flitro">
+				<option value="1" <?php if($attend_filter_name == "1") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Todos los días', CIP_FREE_TXTDM );?></option>
+				<option value="2" <?php if($attend_filter_name == "2") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Solo días asistidos', CIP_FREE_TXTDM );?></option>
+				<option value="3" <?php if($attend_filter_name == "3") echo esc_attr("selected=selected"); ?>><?php esc_html_e('Solo días ausentes', CIP_FREE_TXTDM );?></option>
 				</optgroup>
 			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type="submit" class="btn btn-info get_report_btn"><?php esc_html_e('Get Report', CIP_FREE_TXTDM );?></button>
+			<button type="submit" class="btn btn-info "><?php esc_html_e('Obtener informe', CIP_FREE_TXTDM );?></button>
 		</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
@@ -214,17 +214,17 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 	<thead>
 		<tr class="info main_tb_head">
 			<th>#</th>
-			<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Break Time', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Comienzo de Almuerzo', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Finalización de Almuerzo', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Tiempo de descanso', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
 			<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Localización', CIP_FREE_TXTDM );?></th>
+			<th><?php esc_html_e('Informe', CIP_FREE_TXTDM );?></th>
 		</tr>
 	<thead>
 		<?php if(isset($_POST['filter_name']) && isset($_POST['staff_id'])) { ?>
@@ -333,7 +333,7 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 			}
 			//create a file
 			$report_file = fopen($upload_dir_path."/".$file_name, "w") or die("Unable to create report file!");
-			$headertext = "No., Date, Name, Office In, Office Out, Lunch In, lunch Out, Break Time, Working Hours, IP, Location \n";
+			$headertext = "N., Fecha, Nombre, Entrada, Salida, Inicio de Almuerzo, Finalización de Almuerzo, Descanso, Horas Trabajadas, IP, Localización \n";
 			fwrite($report_file, $headertext);
 			$fullname = ucwords($fname." ".$lname);
 
@@ -522,8 +522,8 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 				<td><?php if($office_in != "") { echo esc_attr( $user_ip ); } else { echo esc_attr( "None"); } ?></td>
 				<td><?php if($office_in != "00:00:00") { echo esc_attr( $row->user_location ); } else { echo esc_attr( "None"); } ?></td>
 				<td><?php if($office_in != "00:00:00") { ?>
-					<button id="view-report" name="view-report" class="btn btn-info" data-toggle="modal" data-target="#ViewModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($row->date); ?>');">View Report</button>
-					<button id="edit-record" name="edit-record" class="btn btn-primary" data-toggle="modal" data-target="#EditModal" onclick="return EditRecord('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($row->date); ?>');">Edit</button>
+					<button id="view-report" name="view-report" class="btn btn-info" data-toggle="modal" data-target="#ViewModal" onclick="return ViewReport('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($row->date); ?>');">Ver informe</button>
+					<button id="edit-record" name="edit-record" class="btn btn-primary" data-toggle="modal" data-target="#EditModal" onclick="return EditRecord('<?php echo esc_attr($id); ?>', '<?php echo esc_attr($userid); ?>', '<?php echo esc_attr($row->date); ?>');">Editar</button>
 					<?php } else { echo esc_attr( 'No report'); } ?>
 				</td>
 			</tr>
@@ -545,13 +545,13 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 						$break_hour = "Sunday";
 					} else {
 						$date = date($date_format, strtotime($row_date));
-						$office_in = "Sorry";
-						$office_out = "No";
-						$lunch_in = "Record";
-						$lunch_out = "Found";
-						$work_hour = '';
-						$user_ip = "";
-						$break_hour = '';
+						$office_in = "-";
+						$office_out = "-";
+						$lunch_in = "-";
+						$lunch_out = "-";
+						$work_hour = '-';
+						$user_ip = "-";
+						$break_hour = '-';
 					}
 			?>
 			<tr class="<?php if($office_in == "Sunday") esc_html_e( "success sunday_tb"); ?>">
@@ -710,27 +710,27 @@ wp_add_inline_style( 'clock-in-report-style', $css ); ?>
 		} ?>
 	</tbody>
 	<?php } ?>		
-	<tfoot>
-		<tr class="info main_tb_head">
-			<th>#</th>
-			<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Break Time', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-			<th><?php esc_html_e('Action', CIP_FREE_TXTDM );?></th>
-		</tr>
-	<tfoot>
+<!--	<tfoot>-->
+<!--		<tr class="info main_tb_head">-->
+<!--			<th>#</th>-->
+<!--			<th>--><?php //esc_html_e('Name', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Date', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Office In', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Office Out', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Lunch In', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Lunch Out', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Break Time', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Work Hour', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('IP', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Location', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			<th>--><?php //esc_html_e('Action', CIP_FREE_TXTDM );?><!--</th>-->
+<!--		</tr>-->
+<!--	<tfoot>-->
 </table>
 <?php
 if ( isset( $flag ) && ! empty ( $flag ) ) { 
 	$work_hourup = array_merge($work_array1,$work_array2,$work_array3);
-	echo "<p class='total_working_hour'>Total Working Time:- ".AddPlayTime( $work_hourup )."</p>";
+	echo "<p class='total_working_hour'>Total de horas trabajadas: ".AddPlayTime( $work_hourup )."</p>";
 }
 ?>
 <?php 

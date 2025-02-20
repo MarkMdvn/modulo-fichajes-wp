@@ -170,8 +170,8 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         if (!empty ($off_in_out)) {
             if ($off_in_out->office_in) $off_in_disable = "disabled";
             if ($off_in_out->office_out != "00:00:00") $off_out_disable = "disabled";
-            if ($off_in_disable == "disabled") $off_in_message = "Your office working session was started at <strong>" . date($time_format, strtotime($off_in_out->office_in)) . "</strong>";
-            if ($off_out_disable == "disabled") $off_out_message = "Your today's office session was completed at <strong>" . date($time_format, strtotime($off_in_out->office_out)) . "</strong>";
+            if ($off_in_disable == "disabled") $off_in_message = "Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($off_in_out->office_in)) . "</strong>";
+            if ($off_out_disable == "disabled") $off_out_message = "Has finalizado la jornada a las: <strong>" . date($time_format, strtotime($off_in_out->office_out)) . "</strong>";
             if ($off_in_out->report != "") $report = $off_in_out->report; else $report = "";
         }
 
@@ -185,8 +185,8 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             $lunch_in_out->lunch_in;
             if ($lunch_in_out->lunch_in != "00:00:00") $lunch_in_disable = "disabled";
             if ($lunch_in_out->lunch_out != "00:00:00") $lunch_out_disable = "disabled";
-            if ($lunch_in_disable == "disabled") $lunch_in_message = "Your lunch session was started at <strong>" . date($time_format, strtotime($lunch_in_out->lunch_in)) . "</strong>";
-            if ($lunch_out_disable == "disabled") $lunch_out_message = "Your lunch session was completed at <strong>" . date($time_format, strtotime($lunch_in_out->lunch_out)) . "</strong>";
+            if ($lunch_in_disable == "disabled") $lunch_in_message = "Periodo de merienda comenzado a las: <strong>" . date($time_format, strtotime($lunch_in_out->lunch_in)) . "</strong>";
+            if ($lunch_out_disable == "disabled") $lunch_out_message = "Periodo de la merienda finalizado a las: <strong>" . date($time_format, strtotime($lunch_in_out->lunch_out)) . "</strong>";
         }
 
         //check already Break in and out
@@ -199,8 +199,8 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             $break_in_out->break_in;
             if ($break_in_out->break_in != "00:00:00") $break_in_disable = "disabled";
             if ($break_in_out->break_out != "00:00:00") $break_out_disable = "disabled";
-            if ($break_in_disable == "disabled") $break_in_message = "Your break session was started at <strong>" . date($time_format, strtotime($break_in_out->break_in)) . "</strong>";
-            if ($break_out_disable == "disabled") $break_out_message = "Your break session was completed at <strong>" . date($time_format, strtotime($break_in_out->break_out)) . "</strong>";
+            if ($break_in_disable == "disabled") $break_in_message = "Has comenzado el descanso a las: <strong>" . date($time_format, strtotime($break_in_out->break_in)) . "</strong>";
+            if ($break_out_disable == "disabled") $break_out_message = "Has finalizado el descanso a las: <strong>" . date($time_format, strtotime($break_in_out->break_out)) . "</strong>";
         }
 
         ?>
@@ -227,7 +227,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                     align-items: center !important;
                 }
                 .custom-nav-bar .nav-right a {
-                    color: #333 !important;
+                    color: black !important;
                     text-decoration: none !important;
                     margin-left: 15px !important;
                     font-weight: 500 !important;
@@ -252,7 +252,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             <div class="custom-nav-bar">
                 <div class="nav-left">
                     <!-- Replace with your logo URL -->
-                    <img src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
+                    <img href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance" src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
                 </div>
                 <div class="nav-right">
                     <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">
@@ -264,11 +264,13 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                     <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-holidays">
                         <i class="fas fa-umbrella-beach"></i>
                     </a>
-                    <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-request">
-                        <i class="fas fa-sticky-note"></i>
+                    <!-- Account Icon -->
+                    <a href="https://control.carniceriademadrid.es/account/">
+                        <i class="fas fa-user"></i>
                     </a>
                 </div>
             </div>
+
 
             <div>
                 <h3 class=""
@@ -506,7 +508,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                                       rows="10"><?php esc_html_e($report); ?></textarea>
                         </p>
                         <p style="text-align: center;">
-                            <input type="button" id="submit-report" name="submit-report" class="btn btn-lg"
+                            <input type="button" id="submit-report" name="submit-report" class="btn btn-lg pb-2"
                                    style="background-color: #000; color: #fff; border: none; padding: 12px; border-radius: 5px; width: 90%; margin-top: 15px;"
                                    onclick="return SendReport('<?php echo esc_attr($userid); ?>', '<?php echo esc_attr(date("Y-m-d")); ?>');"
                                    value="Enviar">
@@ -543,22 +545,22 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                         }
                     </style>
 
-                    <ul class="custom-tabs" role="tablist">
-                        <li role="presentation">
-                            <a class="active" href="#daily-report" aria-controls="home" role="tab" data-toggle="tab">
-                                <?php esc_html_e('Historial', CIP_FREE_TXTDM); ?>
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#upcoming-holiday" aria-controls="in-active-staff" role="tab" data-toggle="tab">
-                                <?php esc_html_e('Vacaciones', CIP_FREE_TXTDM); ?>
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#today-event" aria-controls="in-active-today-event" role="tab" data-toggle="tab">
-                                <?php esc_html_e('Eventos', CIP_FREE_TXTDM); ?>
-                            </a>
-                        </li>
+                    <ul class="custom-tabs" role="tablist" style="">
+<!--                        <li role="presentation">-->
+<!--                            <a class="active" href="#daily-report" aria-controls="home" role="tab" data-toggle="tab">-->
+<!--                                --><?php //esc_html_e('Historial', CIP_FREE_TXTDM); ?>
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li role="presentation">-->
+<!--                            <a href="#upcoming-holiday" aria-controls="in-active-staff" role="tab" data-toggle="tab">-->
+<!--                                --><?php //esc_html_e('Vacaciones', CIP_FREE_TXTDM); ?>
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li role="presentation">-->
+<!--                            <a href="#today-event" aria-controls="in-active-today-event" role="tab" data-toggle="tab">-->
+<!--                                --><?php //esc_html_e('Eventos', CIP_FREE_TXTDM); ?>
+<!--                            </a>-->
+<!--                        </li>-->
                     </ul>
 
                     <div class="table-responsive">
@@ -585,7 +587,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                             <div role="tabpanel" class="tab-pane active pt-2" id="daily-report">
                                 <div class="row" style="margin: 0px;">
                                     <div id="office-clock-div" class="text-left col-6 text-center">
-                                        <h3>Asistencias</h3>
+<!--                                        <h3>Asistencias</h3>-->
                                         <?php
                                         foreach ($all_dates as $row_date) {
                                             $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` LIKE %s", $userid, $row_date));
@@ -646,23 +648,23 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                                         } else {
                                             $final_total_attend = $total_attend4;
                                         }
-
-                                        if (isset($final_total_attend)) {
-                                            echo '<p class="report-stat blue">' . $final_total_attend . '</p>';
-                                        }
+//
+//                                        if (isset($final_total_attend)) {
+//                                            echo '<p class="report-stat blue">' . $final_total_attend . '</p>';
+//                                        }
                                         ?>
                                     </div>
-                                    <div id="office-clock-div" class="text-left col-6 text-center">
-                                        <h3><?php esc_html_e('Ausencias', CIP_FREE_TXTDM); ?></h3>
-                                        <?php ?>
-                                        <p class="report-stat red" data-toggle="tooltip" data-placement="top"
-                                           title="<?php foreach ($total_absent_days as $absent_in_days) {
-                                               if (strtotime($absent_in_days))
-                                                   $absent_in_days = date($date_format, strtotime($absent_in_days));
-                                               print_r($absent_in_days . ',  ');
-                                           } ?>">
-                                            <?php echo staff_total_absent_days_free($userid); ?></p>
-                                    </div>
+<!--                                    <div id="office-clock-div" class="text-left col-6 text-center">-->
+<!--                                        <h3>--><?php //esc_html_e('Ausencias', CIP_FREE_TXTDM); ?><!--</h3>-->
+<!--                                        --><?php //?>
+<!--                                        <p class="report-stat red" data-toggle="tooltip" data-placement="top"-->
+<!--                                           title="--><?php //foreach ($total_absent_days as $absent_in_days) {
+//                                               if (strtotime($absent_in_days))
+//                                                   $absent_in_days = date($date_format, strtotime($absent_in_days));
+//                                               print_r($absent_in_days . ',  ');
+//                                           } ?><!--">-->
+<!--                                            --><?php //echo staff_total_absent_days_free($userid); ?><!--</p>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="upcoming-holiday">
@@ -932,7 +934,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         var date = "<?php echo $date = date("d-m-Y"); ?>";
         var time = "<?php echo $date = date("H:i:s"); ?>";
         var data_values = "type=" + type + "&userid=" + userid + "&date=" + date + "&time=" + time;
-        if (confirm("<?php echo esc_html(isset($cip_settings['clock_in_alert_text']) ? $cip_settings['clock_in_alert_text'] : "Are you sure want to start your office working session now?") ?>") == true) {
+        if (confirm("<?php echo esc_html(isset($cip_settings['clock_in_alert_text']) ? $cip_settings['clock_in_alert_text'] : "¿Seguro que quieres comenzar la jornada?") ?>") == true) {
         jQuery("#office-in-btn").prop('disabled', true);
         jQuery.ajax({
         type: "post",
@@ -957,8 +959,8 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         var time = today_date.getHours() + ":" + today_date.getMinutes() + ":" + today_date.getSeconds();
         var data_values = "type=" + type + "&userid=" + userid + "&date=" + date + "&time=" + time;
         var new_time = jQuery.format.date(today_date, "h:m a");
-        if (confirm("<?php echo esc_html(isset($cip_settings['clock_out_alert_text']) ? $cip_settings['clock_out_alert_text'] : "You are going to office out at") ?> '"+ new_time +"'") == true) {
-        if (confirm("<?php echo esc_html(isset($cip_settings['clock_out_alert_text2']) ? $cip_settings['clock_out_alert_text2'] : "Are you sure and want to office out now?") ?>") == true) {
+        if (confirm("<?php echo esc_html(isset($cip_settings['clock_out_alert_text']) ? $cip_settings['clock_out_alert_text'] : "Finalizas la jornada a las: ") ?> '"+ new_time +"'") == true) {
+        if (confirm("<?php echo esc_html(isset($cip_settings['clock_out_alert_text2']) ? $cip_settings['clock_out_alert_text2'] : "¿Seguro que quieres finalizar la jornada?") ?>") == true) {
         jQuery("#office-out-btn").prop('disabled', true);
         jQuery.ajax({
         type: "post",
@@ -1003,7 +1005,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         var date = today_date.getFullYear() + "-" + (today_date.getMonth() + 1) + "-" + today_date.getDate();
         var time = today_date.getHours() + ":" + today_date.getMinutes() + ":" + today_date.getSeconds();
         var data_values = "type=" + type + "&userid=" + userid + "&date=" + date + "&time=" + time;
-        if (confirm("<?php echo esc_html(isset($cip_settings['lunch_in_alert_text']) ? $cip_settings['lunch_in_alert_text'] : "Are you sure want to start your lunch session now?") ?>") == true) {
+        if (confirm("<?php echo esc_html(isset($cip_settings['lunch_in_alert_text']) ? $cip_settings['lunch_in_alert_text'] : "¿Seguro que quieres finalizar el tiempo de merienda?") ?>") == true) {
         jQuery("#lunch-in-btn").prop('disabled', true);
         jQuery.ajax({
         type: "post",
@@ -1090,7 +1092,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         var date = "<?php echo $date = date("d-m-Y"); ?>";
         var time = "<?php echo $date = date("H:i:s"); ?>";
         var data_values = "type=" + type + "&userid=" + userid + "&date=" + date + "&time=" + time;
-        if (confirm("Are you sure want to start your Break session now?") == true) {
+        if (confirm("¿Seguro que quieres empezar el descanso?") == true) {
         jQuery("#break-in-btn").prop('disabled', true);
         jQuery.ajax({
         type: "post",
@@ -1118,8 +1120,8 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         var time = today_date.getHours() + ":" + today_date.getMinutes() + ":" + today_date.getSeconds();
         var data_values = "type=" + type + "&userid=" + userid + "&date=" + date + "&time=" + time;
         var new_time = jQuery.format.date(today_date, "h:m a");
-        if (confirm("You are going to end your break at '"+ new_time +"'") == true) {
-        if (confirm("Are you sure and want to end your break now?") == true) {
+        if (confirm("Vas a finalizar el descanso a las: '"+ new_time +"'") == true) {
+        if (confirm("¿Seguro que quieres finalizar el periodo de descanso?") == true) {
         jQuery("#break-out-btn").prop('disabled', true);
         jQuery.ajax({
         type: "post",
@@ -1247,25 +1249,25 @@ if (isset($_POST['type']) && isset($_POST['userid'])) {
                 if ($out = $wpdb->query($query)) {
                     $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
                     if ($in = $wpdb->query($query)) {
-                        echo "<div id='$type-result' class='alert alert-info'>Your office working session was started at <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+                        echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
                     } else {
-                        echo "<div id='$type-result' class='alert alert-danger'>Error: unable to start working session.</div>";
+                        echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
                     }
                 }
             } else {
                 $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
                 if ($in = $wpdb->query($query)) {
-                    echo "<div id='$type-result' class='alert alert-info'>Your office working session was started at <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+                    echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
                 } else {
-                    echo "<div id='$type-result' class='alert alert-danger'>Error: unable to start working session.</div>";
+                    echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
                 }
             }
         } else {
             $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
             if ($in = $wpdb->query($query)) {
-                echo "<div id='$type-result' class='alert alert-info'>Your office working session was started at <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+                echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
             } else {
-                echo "<div id='$type-result' class='alert alert-danger'>Error: unable to start working session.</div>";
+                echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es<</div>";
             }
         }
 
@@ -1345,8 +1347,8 @@ if (isset($_POST['staff_id'])) {
     if ($in = $wpdb->query($query)) {
     }
     ?>
-    <div id='report-result' class='alert alert-info'>
-        <strong><?php esc_html_e('Success:', CIP_FREE_TXTDM); ?></strong> <?php esc_html_e('Report submitted successfully.', CIP_FREE_TXTDM); ?>
+    <div id='report-result' class='alert alert-info' style="padding-top: 5px !important;">
+        <strong><?php esc_html_e('Éxito:', CIP_FREE_TXTDM); ?></strong> <?php esc_html_e('el informe se ha guardado correctamente.', CIP_FREE_TXTDM); ?>
     </div>
     <?php
 }

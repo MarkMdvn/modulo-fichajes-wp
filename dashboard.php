@@ -87,16 +87,16 @@ $current_date           = date("Y-m-d");
 		<thead>
 			<tr class="info main_tb_head">
 				<th>#</th>
-				<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('IP Address', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Nombre', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Localización', CIP_FREE_TXTDM );?></th>
+				<th><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -174,7 +174,7 @@ $current_date           = date("Y-m-d");
 				</td>
 				<td><strong>
 					<?php 
-					 if( ! empty ( $staff->office_in ) && $staff->office_in != '00:00:00' && $staff->office_out == '00:00:00' ) echo "<button class='btn btn-sm btn-success'>IN</button>"; else echo "<button class='btn btn-sm btn-danger'>OUT</button>"; 
+					 if( ! empty ( $staff->office_in ) && $staff->office_in != '00:00:00' && $staff->office_out == '00:00:00' ) echo "<button class='btn btn-sm btn-success'>En el sitio</button>"; else echo "<button class='btn btn-sm btn-danger'>Ausente</button>";
 					?>
 					</strong>
 				</td>
@@ -188,20 +188,20 @@ $current_date           = date("Y-m-d");
 			<?php }
 			?>
 		</tbody>
-			<thead>
-			<tr class="info main_tb_head">
-				<th>#</th>
-				<th><?php esc_html_e('Name', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Date', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Office In', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Office Out', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Lunch In', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Lunch Out', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Work Hour', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('IP Address', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Location', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Status', CIP_FREE_TXTDM );?></th>
-			</tr>
-		</thead>
+<!--			<thead>-->
+<!--			<tr class="info main_tb_head">-->
+<!--				<th>#</th>-->
+<!--				<th>--><?php //esc_html_e('Name', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Date', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Office In', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Office Out', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Lunch In', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Lunch Out', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Work Hour', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('IP Address', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Location', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Status', CIP_FREE_TXTDM );?><!--</th>-->
+<!--			</tr>-->
+<!--		</thead>-->
 	</table>
 </div>
