@@ -15,18 +15,20 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 	$status         = sanitize_text_field( $_POST['status'] );
 	$start_date     = sanitize_text_field( $_POST['start_date'] );
 	$end_date       = sanitize_text_field( $_POST['end_date'] );
+    $user_ids = isset($_POST['user_ids']) ? array_map('absint', $_POST['user_ids']) : array();
 	$date1          = date_create( $start_date );
 	$date2          = date_create( $end_date );
 	$diff           = date_diff( $date1,$date2 );
 	$leaves         = $diff->format("%a");	
 	$leaves         = $leaves+1;	
-	
+
 	$new_holiday = array ( 
 		'name'       => $name,
 		'start_date' => $start_date,
 		'end_date'   => $end_date,
 		'leaves'     => $leaves,
 		'status'     => $status,
+        'user_ids' => $user_ids,
 	);
 
 	if ( empty ( $saved_holidays ) ) {
@@ -40,7 +42,7 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 			</div>";
 	} else {
 		echo "<div class='alert alert-danger'>
-			  <strong>Failed!</strong> 
+			  <strong>Algo ha salido mal</strong> 
 			</div>";
 	}
 
@@ -177,7 +179,20 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 						<label for="end_date"><?php esc_html_e('Finalización', CIP_FREE_TXTDM );?></label>
 						<input type="input" class="form-control edate" id="end_date" name="end_date" placeholder="(Formato YYYY-MM-DD)" required>
 					</div>
-					<div class="form-group">
+                    <div class="form-group">
+                        <label for="user_ids"><?php esc_html_e('Usuarios asignados', CIP_FREE_TXTDM ); ?></label>
+                        <select id="user_ids" name="user_ids[]" class="form-control" multiple>
+                            <?php
+                            // Obtiene solo usuarios con rol 'author'
+                            $users = get_users( array( 'role' => 'author' ) );
+                            foreach ( $users as $user ) {
+                                echo '<option value="' . esc_attr( $user->ID ) . '">' . esc_html( $user->display_name ) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
 						<label for="status"><?php esc_html_e('Estado', CIP_FREE_TXTDM );?></label>
 						<select id="status" name="status" class="form-control">
 							<optgroup label="Select Any Status">
@@ -191,7 +206,7 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 					<input type="submit" id="add-holiday-button" name="add-holiday-button" class="btn btn-success" value="Añadir">
 					<button type="button" id="add-holiday-close" name="add-holiday-close" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 					<div id="add-loading-icon" style="display:none;">
-						<?php esc_html_e('Processing...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
+						<?php esc_html_e('Procesando...', CIP_FREE_TXTDM );?><i class="fas fa-spinner fa-3x" aria-hidden="true"></i>
 					</div>
 				</div>
 			</form>
@@ -248,12 +263,13 @@ if ( isset( $_REQUEST['add-holiday-button'] ) ) {
 		</div>
 	</div>
 </div>
+
 <?php 
 wp_register_script( 'clock-in-holidays-script', false );
 wp_enqueue_script( 'clock-in-holidays-script' );
 $js = " ";
 ob_start(); ?>
-
+<script>
 //tabs
 jQuery('#myTabs a').click(function (e) {
   e.preventDefault()
@@ -357,7 +373,7 @@ function DoAction(action, id){
 	
 	//delete
 	if(action == "delete") {
-		if (confirm("Are you sure want to delete this holiday?") == true) {
+		if (confirm("¿Seguro que quieres borrar las vacaciones?") == true) {
 			var data_values = "&action=" + action + "&id=" + id;
 			//post data
 			jQuery.ajax({
@@ -375,6 +391,7 @@ function DoAction(action, id){
 		}
 	}
 }
+</script>
 <?php
 $js .= ob_get_clean();
 wp_add_inline_script( 'clock-in-holidays-script', $js ); ?>
@@ -417,6 +434,7 @@ if ( isset ( $_POST['action'] ) ) {
 			</tr>
 		</table>
 		</div>
+
 		<?php
 	} // end view
 	
