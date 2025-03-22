@@ -1,5 +1,5 @@
 <?php
-// Exit if accessed directly
+// Exit if accessed directlys
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 global $wpdb;

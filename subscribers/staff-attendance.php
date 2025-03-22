@@ -162,19 +162,55 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
         }
 
         //check already office in and out
+//        $off_in_disable = "";
+//        $off_out_disable = "";
+//        $off_in_message = "";
+//        $off_out_message = "";
+//        $off_in_out = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $current_date));
+//        if (!empty($off_in_out)) {
+//            if ($off_in_out->office_in) $off_in_disable = "disabled";
+//            if ($off_in_out->office_out != "00:00:00") $off_out_disable = "disabled";
+//            if ($off_in_disable == "disabled") $off_in_message = "Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($off_in_out->office_in)) . "</strong>";
+//            if ($off_out_disable == "disabled") $off_out_message = "Has finalizado la jornada a las: <strong>" . date($time_format, strtotime($off_in_out->office_out)) . "</strong>";
+//            if ($off_in_out->report != "") $report = $off_in_out->report;
+//            else $report = "";
+//        }
+
+        // --- New Office Session Button Logic ---
+// Retrieve all sessions for the current day
+        $today_sessions = $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s ORDER BY id DESC",
+            $userid, $current_date
+        ));
+
         $off_in_disable = "";
         $off_out_disable = "";
         $off_in_message = "";
         $off_out_message = "";
-        $off_in_out = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $current_date));
-        if (!empty($off_in_out)) {
-            if ($off_in_out->office_in) $off_in_disable = "disabled";
-            if ($off_in_out->office_out != "00:00:00") $off_out_disable = "disabled";
-            if ($off_in_disable == "disabled") $off_in_message = "Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($off_in_out->office_in)) . "</strong>";
-            if ($off_out_disable == "disabled") $off_out_message = "Has finalizado la jornada a las: <strong>" . date($time_format, strtotime($off_in_out->office_out)) . "</strong>";
-            if ($off_in_out->report != "") $report = $off_in_out->report;
-            else $report = "";
+        $current_session = null;
+
+        if (!empty($today_sessions)) {
+            foreach ($today_sessions as $session) {
+                // If session has clocked in but not yet clocked out, consider it as open.
+                if ($session->office_in != "00:00:00" && $session->office_out == "00:00:00") {
+                    $current_session = $session;
+                    break;
+                }
+            }
         }
+
+        if ($current_session) {
+            // There is an active (open) session: disable clock-in, enable clock-out.
+            $off_in_disable = "disabled";
+            $off_in_message = "Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($current_session->office_in)) . "</strong>";
+            $off_out_disable = ""; // ensure clock-out button is enabled
+        } else {
+            // No open session found: disable clock-out.
+            $off_out_disable = "disabled";
+        }
+
+// (If you need similar changes for lunch or break, apply the same logic below each section.)
+
 
         //check already lunch in and out
         $lunch_in_disable = "";
@@ -260,7 +296,9 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             <div class="custom-nav-bar">
                 <div class="nav-left">
                     <!-- Replace with your logo URL -->
-                    <img href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance" src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png" alt="Logo">
+                    <img href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance"
+                         src="https://www.carniceriademadrid.es/wp-content/uploads/2021/03/logo-carniceria-de-madrid.png"
+                         alt="Logo">
                 </div>
                 <div class="nav-right">
                     <a href="https://control.carniceriademadrid.es/wp-admin/admin.php?page=subscribers-staff-attendance">
@@ -410,7 +448,6 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                         </button>
 
 
-
                     </div>
 
 
@@ -455,17 +492,43 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             </div>
 
 
+<!--            <div id="office-clock-div" class="text-left col-md-12" style="margin-top: 1%;">-->
+<!--                --><?php //if ($off_out_message) { ?>
+<!--                    <div id="office-out-result"-->
+<!--                         class="alert alert-info">--><?php //echo wp_kses_post($off_out_message, CIP_FREE_TXTDM); ?><!--</div>-->
+<!--                --><?php //}
+//                if ($off_in_message) { ?>
+<!--                    <div id="office-in-result"-->
+<!--                         class="alert alert-info">--><?php //echo wp_kses_post($off_in_message, CIP_FREE_TXTDM); ?><!--</div>-->
+<!--                --><?php //} ?>
+<!--                <br>-->
+<!--            </div>-->
+
             <div id="office-clock-div" class="text-left col-md-12" style="margin-top: 1%;">
-                <?php if ($off_out_message) { ?>
-                    <div id="office-out-result"
-                         class="alert alert-info"><?php echo wp_kses_post($off_out_message, CIP_FREE_TXTDM); ?></div>
-                <?php }
-                if ($off_in_message) { ?>
-                    <div id="office-in-result"
-                         class="alert alert-info"><?php echo wp_kses_post($off_in_message, CIP_FREE_TXTDM); ?></div>
-                <?php } ?>
+                <?php
+                // Retrieve all sessions for today
+                $today_sessions = $wpdb->get_results($wpdb->prepare(
+                    "SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s ORDER BY id ASC",
+                    $userid, $current_date
+                ));
+                if (!empty($today_sessions)) {
+                    foreach ($today_sessions as $session) {
+                        // Check and display the clock-in message if available
+                        if ($session->office_in != "00:00:00" && $session->office_in != "") {
+                            echo "<div class='alert alert-primary'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($session->office_in)) . "</strong></div>";
+                        }
+                        // Check and display the clock-out message if available
+                        if ($session->office_out != "00:00:00" && $session->office_out != "") {
+                            echo "<div class='alert alert-success'>Tu sesión se completó a las: <strong>" . date($time_format, strtotime($session->office_out)) . "</strong></div>";
+                        }
+                    }
+                } else {
+                    echo "<div class='alert alert-info'>No hay registros para el día de hoy.</div>";
+                }
+                ?>
                 <br>
             </div>
+
 
             <div id="lunch-clock-div" class="text-left col-md-12" style="margin-top: 1%;">
                 <?php if ($lunch_out_message) { ?>
@@ -652,18 +715,21 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                                         ?>
                                     </div>
                                     <!--                                    <div id="office-clock-div" class="text-left col-6 text-center">-->
-                                    <!--                                        <h3>--><?php //esc_html_e('Ausencias', CIP_FREE_TXTDM);
+                                    <!--                                        <h3>-->
+                                    <?php //esc_html_e('Ausencias', CIP_FREE_TXTDM);
                                     ?><!--</h3>-->
                                     <!--                                        --><?php //
                                     ?>
                                     <!--                                        <p class="report-stat red" data-toggle="tooltip" data-placement="top"-->
-                                    <!--                                           title="--><?php //foreach ($total_absent_days as $absent_in_days) {
+                                    <!--                                           title="-->
+                                    <?php //foreach ($total_absent_days as $absent_in_days) {
                                     //                                               if (strtotime($absent_in_days))
                                     //                                                   $absent_in_days = date($date_format, strtotime($absent_in_days));
                                     //                                               print_r($absent_in_days . ',  ');
                                     //                                           }
                                     ?><!--">-->
-                                    <!--                                            --><?php //echo staff_total_absent_days_free($userid);
+                                    <!--                                            -->
+                                    <?php //echo staff_total_absent_days_free($userid);
                                     ?><!--</p>-->
                                     <!--                                    </div>-->
                                 </div>
@@ -1221,80 +1287,137 @@ if (isset($_POST['type']) && isset($_POST['userid'])) {
     $extra = sanitize_text_field(serialize($extra));
 
     // office
+//    if ($type == "office-in") {
+//
+//        if ($userdatep = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $prev_date))) {
+//            $office_outp = $userdatep->office_out;
+//            $office_inp = $userdatep->office_in;
+//            $datep = $prev_date;
+//            $sepparator = '-';
+//            $parts = explode($sepparator, $datep);
+//            $dayForDate = date("l", mktime(0, 0, 0, $parts[1], $parts[2], $parts[0]));
+//
+//            if ($office_outp == "00:00:00" && $office_inp != "00:00:00") {
+//                $strStart = $office_inp;
+//                if ($dayForDate == "Saturday") {
+//                    $strEnd = '15:00:00';
+//                } else {
+//                    $strEnd = '19:00:00';
+//                }
+//                $dteStart = new DateTime($strStart);
+//                $dteEnd = new DateTime($strEnd);
+//                $dteDiff = $dteStart->diff($dteEnd);
+//                $work_hour = $dteDiff->format("%H:%I:%S");
+//                $timee = "00:00:00";
+//
+//                $query = $wpdb->prepare("UPDATE `$staff_attendance_table` SET `today_total_hours` = %s WHERE `staff_id` = %d AND `date` = %s", $work_hour, $userid, $prev_date);
+//
+//                if ($out = $wpdb->query($query)) {
+//                    $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
+//                    if ($in = $wpdb->query($query)) {
+//                        echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+//                    } else {
+//                        echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
+//                    }
+//                }
+//            } else {
+//                $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
+//                if ($in = $wpdb->query($query)) {
+//                    echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+//                } else {
+//                    echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
+//                }
+//            }
+//        } else {
+//            $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
+//            if ($in = $wpdb->query($query)) {
+//                echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+//            } else {
+//                echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es<</div>";
+//            }
+//        }
+//    }
+
+    // Office Clock In (Multiple Sessions allowed)
     if ($type == "office-in") {
-
-        if ($userdatep = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $prev_date))) {
-            $office_outp = $userdatep->office_out;
-            $office_inp = $userdatep->office_in;
-            $datep = $prev_date;
-            $sepparator = '-';
-            $parts = explode($sepparator, $datep);
-            $dayForDate = date("l", mktime(0, 0, 0, $parts[1], $parts[2], $parts[0]));
-
-            if ($office_outp == "00:00:00" && $office_inp != "00:00:00") {
-                $strStart = $office_inp;
-                if ($dayForDate == "Saturday") {
-                    $strEnd = '15:00:00';
-                } else {
-                    $strEnd = '19:00:00';
-                }
-                $dteStart = new DateTime($strStart);
-                $dteEnd = new DateTime($strEnd);
-                $dteDiff = $dteStart->diff($dteEnd);
-                $work_hour = $dteDiff->format("%H:%I:%S");
-                $timee = "00:00:00";
-
-                $query = $wpdb->prepare("UPDATE `$staff_attendance_table` SET `today_total_hours` = %s WHERE `staff_id` = %d AND `date` = %s", $work_hour, $userid, $prev_date);
-
-                if ($out = $wpdb->query($query)) {
-                    $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
-                    if ($in = $wpdb->query($query)) {
-                        echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
-                    } else {
-                        echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
-                    }
-                }
-            } else {
-                $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
-                if ($in = $wpdb->query($query)) {
-                    echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
-                } else {
-                    echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
-                }
-            }
+        // Check if there's already an open session for today
+        $open_session = $wpdb->get_row($wpdb->prepare(
+            "SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s AND office_in != %s AND office_out = %s ORDER BY id DESC",
+            $userid, $date, "00:00:00", "00:00:00"
+        ));
+        if ($open_session) {
+            // Prevent a new clock in if one is already open.
+            echo "<div id='office-in-result' class='alert alert-warning'>Ya tienes una sesión activa. Por favor, finalízala antes de iniciar una nueva.</div>";
         } else {
-            $query = $wpdb->prepare("INSERT INTO `$staff_attendance_table` (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) VALUES (NULL, %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s );", $userid, $time, '', '', '', $date, '', $ip, date("Y-m-d H:i:s"), '', $extra, $user_location);
-            if ($in = $wpdb->query($query)) {
-                echo "<div id='$type-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></div>";
+            // Insert a new record with the current time as office_in.
+            $query = $wpdb->prepare(
+                "INSERT INTO `$staff_attendance_table` 
+            (`id`, `staff_id`, `office_in`, `office_out`, `lunch_in`, `lunch_out`, `date`, `today_total_hours`, `ip`, `timestamp`, `note`, `extra`, `user_location`) 
+            VALUES (NULL, %d, %s, '', '', '', %s, '', %s, %s, '', %s, %s)",
+                $userid, $time, $date, $ip, date("Y-m-d H:i:s"), $extra, $user_location
+            );
+            if ($wpdb->query($query)) {
+                echo "<div id='office-in-result' class='alert alert-info'>Tu jornada ha comenzado a las: <strong>" . date($time_format, strtotime($time)) . "</strong></div>";
             } else {
-                echo "<div id='$type-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es<</div>";
+                echo "<div id='office-in-result' class='alert alert-danger'>Ha habido un error, contacta con epoint.es</div>";
             }
         }
     }
+
+
+//    if ($type == "office-out") {
+//        $today_total_hours = "00:00:00";
+//        // total hours calculation
+//        if ($userdate = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $date))) {
+//            $office_in = $userdate->office_in;
+//            $office_out = $time;
+//            $strStart = $office_in;
+//            $strEnd = $office_out;
+//            $dteStart = new DateTime($strStart);
+//            $dteEnd = new DateTime($strEnd);
+//            $dteDiff = $dteStart->diff($dteEnd);
+//            $today_total_hours = $dteDiff->format("%H:%I:%S");
+//        }
+//        $query = $wpdb->prepare("UPDATE `$staff_attendance_table` SET `office_out` = %s, `today_total_hours` = %s WHERE `staff_id` = %d AND `date` = %s", $time, $today_total_hours, $userid, $date);
+//        if ($out = $wpdb->query($query)) {
+//            echo "<div id='$type-result' class='alert alert-info'>
+//					<p>Your today's office session was completed at <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></p>
+//					<p>Your today's Total Working Hours is <strong>" . $today_total_hours . "</strong> hours</p>
+//				  </div>";
+//        } else {
+//            echo "<div id='$type-result' class='alert alert-danger'>Error: unable to complete end session.</div>";
+//        }
+//    }
 
     if ($type == "office-out") {
-        $today_total_hours = "00:00:00";
-        // total hours calculation
-        if ($userdate = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s", $userid, $date))) {
-            $office_in = $userdate->office_in;
-            $office_out = $time;
-            $strStart = $office_in;
-            $strEnd = $office_out;
-            $dteStart = new DateTime($strStart);
-            $dteEnd = new DateTime($strEnd);
+        // Look for the latest open session for today.
+        $open_session = $wpdb->get_row($wpdb->prepare(
+            "SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` = %s AND office_in != %s AND office_out = %s ORDER BY id DESC",
+            $userid, $date, "00:00:00", "00:00:00"
+        ));
+        if ($open_session) {
+            $office_in = $open_session->office_in;
+            $dteStart = new DateTime($office_in);
+            $dteEnd = new DateTime($time);
             $dteDiff = $dteStart->diff($dteEnd);
             $today_total_hours = $dteDiff->format("%H:%I:%S");
-        }
-        $query = $wpdb->prepare("UPDATE `$staff_attendance_table` SET `office_out` = %s, `today_total_hours` = %s WHERE `staff_id` = %d AND `date` = %s", $time, $today_total_hours, $userid, $date);
-        if ($out = $wpdb->query($query)) {
-            echo "<div id='$type-result' class='alert alert-info'>
-					<p>Your today's office session was completed at <strong>" . date($time_format, strtotime($_POST['time'])) . "</strong></p>
-					<p>Your today's Total Working Hours is <strong>" . $today_total_hours . "</strong> hours</p>
-				  </div>";
+            $query = $wpdb->prepare(
+                "UPDATE `$staff_attendance_table` SET office_out = %s, today_total_hours = %s WHERE id = %d",
+                $time, $today_total_hours, $open_session->id
+            );
+            if ($wpdb->query($query)) {
+                echo "<div id='office-out-result' class='alert alert-info'>
+                    <p>Tu sesión se completó a las: <strong>" . date($time_format, strtotime($time)) . "</strong></p>
+                    <p>Total de horas: <strong>" . $today_total_hours . "</strong></p>
+                  </div>";
+            } else {
+                echo "<div id='office-out-result' class='alert alert-danger'>Error: no se pudo finalizar la sesión.</div>";
+            }
         } else {
-            echo "<div id='$type-result' class='alert alert-danger'>Error: unable to complete end session.</div>";
+            echo "<div id='office-out-result' class='alert alert-warning'>No hay una sesión activa para finalizar.</div>";
         }
     }
+
 
     //lunch
     if ($type == "lunch-in") {
