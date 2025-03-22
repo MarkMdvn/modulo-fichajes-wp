@@ -340,13 +340,13 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             </div>
 
             <!-- Clock -->
-            <div id="cip_clock"
-                 style="background: #1e1e1e; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin: 20px auto; max-width: 600px;">
-                <div class="row">
+            <div id="cip_clock" style="background: #1e1e1e; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin: 20px auto; max-width: 600px; ">
+                <div class="row" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
 
                     <!-- RELOJ  -->
                     <style>
                         /* Outer container for the entire clock */
+                        
                         .outer-clock-container {
                             margin: 40px auto !important;
                             max-width: 600px !important;
@@ -492,17 +492,19 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
             </div>
 
 
-<!--            <div id="office-clock-div" class="text-left col-md-12" style="margin-top: 1%;">-->
-<!--                --><?php //if ($off_out_message) { ?>
-<!--                    <div id="office-out-result"-->
-<!--                         class="alert alert-info">--><?php //echo wp_kses_post($off_out_message, CIP_FREE_TXTDM); ?><!--</div>-->
-<!--                --><?php //}
-//                if ($off_in_message) { ?>
-<!--                    <div id="office-in-result"-->
-<!--                         class="alert alert-info">--><?php //echo wp_kses_post($off_in_message, CIP_FREE_TXTDM); ?><!--</div>-->
-<!--                --><?php //} ?>
-<!--                <br>-->
-<!--            </div>-->
+            <!--            <div id="office-clock-div" class="text-left col-md-12" style="margin-top: 1%;">-->
+            <!--                --><?php //if ($off_out_message) { ?>
+            <!--                    <div id="office-out-result"-->
+            <!--                         class="alert alert-info">-->
+            <?php //echo wp_kses_post($off_out_message, CIP_FREE_TXTDM); ?><!--</div>-->
+            <!--                --><?php //}
+            //                if ($off_in_message) { ?>
+            <!--                    <div id="office-in-result"-->
+            <!--                         class="alert alert-info">-->
+            <?php //echo wp_kses_post($off_in_message, CIP_FREE_TXTDM); ?><!--</div>-->
+            <!--                --><?php //} ?>
+            <!--                <br>-->
+            <!--            </div>-->
 
             <div id="office-clock-div" class="text-left col-md-12" style="margin-top: 1%;">
                 <?php
