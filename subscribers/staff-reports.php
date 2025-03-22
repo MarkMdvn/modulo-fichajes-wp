@@ -314,8 +314,8 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
                 <th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
                 <th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
                 <th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
-                <th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
-                <th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
+<!--                <th>--><?php //esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?><!--</th>-->
+<!--                <th>--><?php //esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?><!--</th>-->
                 <th><?php esc_html_e('Tiempo de Descanso', CIP_FREE_TXTDM );?></th>
                 <th><?php esc_html_e('Horas Trabajadas', CIP_FREE_TXTDM );?></th>
                 <th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
@@ -372,7 +372,7 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 				$work_array2 = array();
 				$work_array3 = array();
 				foreach($all_days_report as $row_date) {
-					$row = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` LIKE %s", $userid, $row_date));
+					 $row = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_attendance_table` WHERE `staff_id` = %d AND `date` LIKE %s", $userid, $row_date));
 
 					if ( ! empty ( $row ) ) {
 						$flag = 1;
@@ -380,8 +380,8 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 						$date = $row->date;
 						$office_in = $row->office_in;
 						$office_out = $row->office_out;
-						$lunch_in = $row->lunch_in;
-						$lunch_out = $row->lunch_out;
+//						$lunch_in = $row->lunch_in;
+//						$lunch_out = $row->lunch_out;
 						$extra = @unserialize($row->extra);
 						$sever_name = $_SERVER['SERVER_NAME'];
 						$sever_ip_address = $_SERVER['SERVER_ADDR'];
@@ -422,10 +422,10 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 
 						if(date("l", strtotime($date)) == "Sunday") {
 							$date = date($date_format, strtotime($date));
-							$office_in = "Sunday";
-							$office_out = "Sunday";
-							$lunch_in = "Sunday";
-							$lunch_out = "Sunday";
+							$office_in = "";
+							$office_out = "";
+							$lunch_in = "";
+							$lunch_out = "";
 							$sever_ip_address = "";
 							$report = "";
 						} else {
@@ -438,8 +438,8 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 					<td><?php esc_html_e( $date); ?></td>
 					<td><?php esc_html_e( $office_in); ?></td>
 					<td><?php esc_html_e( $office_out); ?></td>
-					<td><?php esc_html_e( $lunch_in); ?></td>
-					<td><?php esc_html_e( $lunch_out); ?></td>
+<!--					<td>--><?php //esc_html_e( $lunch_in); ?><!--</td>-->
+<!--					<td>--><?php //esc_html_e( $lunch_out); ?><!--</td>-->
 					<td>
 					<?php esc_html_e( $break_hour); ?>
 					</td>
@@ -485,8 +485,8 @@ if($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHERE
 					<td><?php esc_html_e( $date); ?></td>
 					<td><?php esc_html_e( $office_in); ?></td>
 					<td><?php esc_html_e( $office_out); ?></td>
-					<td><?php esc_html_e( $lunch_in); ?></td>
-					<td><?php esc_html_e( $lunch_out); ?></td>
+<!--					<td>--><?php //esc_html_e( $lunch_in); ?><!--</td>-->
+<!--					<td>--><?php //esc_html_e( $lunch_out); ?><!--</td>-->
 					<td>
 					<?php esc_html_e( $break_hour); ?>
 					</td>
