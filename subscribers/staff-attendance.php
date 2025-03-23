@@ -346,7 +346,7 @@ if ($userdata = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$staff_table` WHER
                     <!-- RELOJ  -->
                     <style>
                         /* Outer container for the entire clock */
-                        
+
                         .outer-clock-container {
                             margin: 40px auto !important;
                             max-width: 600px !important;

@@ -91,8 +91,8 @@ $current_date           = date("Y-m-d");
 				<th><?php esc_html_e('Fecha', CIP_FREE_TXTDM );?></th>
 				<th><?php esc_html_e('Entrada', CIP_FREE_TXTDM );?></th>
 				<th><?php esc_html_e('Salida', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?></th>
-				<th><?php esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?></th>
+<!--				<th>--><?php //esc_html_e('Inicio Almuerzo', CIP_FREE_TXTDM );?><!--</th>-->
+<!--				<th>--><?php //esc_html_e('Fin Almuerzo', CIP_FREE_TXTDM );?><!--</th>-->
 				<th><?php esc_html_e('Horas trabajadas', CIP_FREE_TXTDM );?></th>
 				<th><?php esc_html_e('IP', CIP_FREE_TXTDM );?></th>
 				<th><?php esc_html_e('Localización', CIP_FREE_TXTDM );?></th>
@@ -119,13 +119,13 @@ $current_date           = date("Y-m-d");
 						$office_date = date($date_format , strtotime($staff->date));
 						$office_in   = $staff->office_in;
 						$office_out  = $staff->office_out;					
-						$lunch_in    = $staff->lunch_in;
-						$lunch_out   = $staff->lunch_out;
+//						$lunch_in    = $staff->lunch_in;
+//						$lunch_out   = $staff->lunch_out;
 
 						if($office_in  != "00:00:00") $office_in = date($time_format, strtotime($office_in));
 						if($office_out != "00:00:00") $office_out = date($time_format, strtotime($office_out));
-						if($lunch_in   != "00:00:00") $lunch_in = date($time_format, strtotime($lunch_in));
-						if($lunch_out  != "00:00:00") $lunch_out = date($time_format, strtotime($lunch_out));
+//						if($lunch_in   != "00:00:00") $lunch_in = date($time_format, strtotime($lunch_in));
+//						if($lunch_out  != "00:00:00") $lunch_out = date($time_format, strtotime($lunch_out));
 
 						$office_status           = 1;
 						$extra                   = @unserialize($staff->extra);
@@ -146,18 +146,18 @@ $current_date           = date("Y-m-d");
 						$server_signature            = $_SERVER['SERVER_SIGNATURE'];
 					} else {
 						$office_date                 = date($date_format , strtotime($current_date));
-						$office_in                   = "None";
-						$office_out                  = "None";
-						$lunch_in                    = "None";
-						$lunch_out                   = "None";
+						$office_in                   = "-";
+						$office_out                  = "-";
+						$lunch_in                    = "-";
+						$lunch_out                   = "-";
 						$office_status               = 0;
-						$sever_name                  = "None";
-						$sever_ip_address            = "None";
-						$sever_remote_ip_address     = "None";
-						$sever_bwoser_system_details = "None";
-						$server_software             = "None";
-						$server_signature            = "None";
-						$work_hour                   = "None";
+						$sever_name                  = "-";
+						$sever_ip_address            = "-";
+						$sever_remote_ip_address     = "-";
+						$sever_bwoser_system_details = "-";
+						$server_software             = "-";
+						$server_signature            = "-";
+						$work_hour                   = "-";
 					}
 				?>
 			<tr>
@@ -166,11 +166,11 @@ $current_date           = date("Y-m-d");
 				<td><?php esc_html_e( $office_date); ?></td>
 				<td><?php esc_html_e( $office_in); ?></td>
 				<td><?php esc_html_e( $office_out); ?></td>
-				<td><?php esc_html_e( $lunch_in); ?></td>
-				<td><?php esc_html_e( $lunch_out); ?></td>
+<!--				<td>--><?php //esc_html_e( $lunch_in); ?><!--</td>-->
+<!--				<td>--><?php //esc_html_e( $lunch_out); ?><!--</td>-->
 				<td><?php if($office_in != "00:00:00" && isset( $work_hour ) ) { esc_html_e( $work_hour); } else { esc_html_e('None'); } ?></td>
-				<td><?php if($office_in != "None") { esc_html_e( $user_ip); } else { esc_html_e( "None"); } ?></td>
-				<td><?php if($office_in != "None") {  esc_html_e( $staff->user_location); } else { esc_html_e( "None"); } ?>
+				<td><?php if($office_in != "None") { esc_html_e( $user_ip); } else { esc_html_e( "-"); } ?></td>
+				<td><?php if($office_in != "None") {  esc_html_e( $staff->user_location); } else { esc_html_e( "-"); } ?>
 				</td>
 				<td><strong>
 					<?php 
