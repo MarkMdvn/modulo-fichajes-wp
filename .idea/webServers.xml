@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="10f7a602-30ca-4713-b9d7-ce1dab15d9b2" name="control.carniceriademadrid.es" url="http://carniceriademadrid-es.espacioseguro.com">
+        <fileTransfer host="carniceriademadrid-es.espacioseguro.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="e5a694cf-bdb6-45bc-a9b4-cd91545a9711" name="jj-delcerro" url="http://ftp.juanjosedelcerro.es">
+        <fileTransfer host="ftp.juanjosedelcerro.es" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="c2f1c725-8749-43f7-a648-2abb33df6b30" name="eliteclubtrainers" url="http://eliteclubtrainingtest-es.espacioseguro.com">
+        <fileTransfer host="eliteclubtrainingtest-es.espacioseguro.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
